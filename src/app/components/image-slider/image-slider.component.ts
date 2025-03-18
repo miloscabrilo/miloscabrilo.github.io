@@ -7,11 +7,10 @@ import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 Swiper.use([Navigation, Pagination, Scrollbar, A11y]);
 
 @Component({
-  selector: 'image-slider',
-  templateUrl: './image-slider.component.html',
-  styleUrls: ['./image-slider.component.scss'],
-  standalone: true,
-  imports: [CommonModule],
+    selector: 'image-slider',
+    templateUrl: './image-slider.component.html',
+    styleUrls: ['./image-slider.component.scss'],
+    imports: [CommonModule]
 })
 export class ImageSliderComponent implements OnInit {
   public swiper = new Swiper('.swiper-container', {

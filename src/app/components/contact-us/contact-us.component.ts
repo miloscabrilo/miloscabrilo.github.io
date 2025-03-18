@@ -5,14 +5,15 @@ import { ContactUsForm } from '../../interfaces/contact-us.interface';
 import { ControlsOf } from '../../interfaces/form.interface';
 
 @Component({
-  selector: 'contact-us',
-  //standalone: true,
-  /* imports: [
-    FormsModule,
-    ReactiveFormsModule,
-  ], */
-  templateUrl: './contact-us.component.html',
-  styleUrl: './contact-us.component.scss'
+    selector: 'contact-us',
+    //standalone: true,
+    /* imports: [
+      FormsModule,
+      ReactiveFormsModule,
+    ], */
+    templateUrl: './contact-us.component.html',
+    styleUrl: './contact-us.component.scss',
+    standalone: false
 })
 export class ContactUsComponent {
 
