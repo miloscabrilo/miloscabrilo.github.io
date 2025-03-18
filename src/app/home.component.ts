@@ -7,9 +7,9 @@ import { ImageSliderComponent } from './components/image-slider/image-slider.com
 @Component({
     selector: 'home',
     imports: [
-        RouterOutlet,
-        BrowserModule,
-        ImageSliderComponent
+        // RouterOutlet,
+        //BrowserModule,
+        //ImageSliderComponent
     ],
     templateUrl: './home.component.html',
     styleUrl: './home.component.scss'
