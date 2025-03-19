@@ -7,7 +7,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "ionic-site": {
+    "miloscabrilo": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -21,7 +21,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/ionic-site",
+            "outputPath": "dist/miloscabrilo",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -67,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ionic-site:build:production"
+              "buildTarget": "miloscabrilo:build:production"
             },
             "development": {
-              "buildTarget": "ionic-site:build:development"
+              "buildTarget": "miloscabrilo:build:development"
             }
           },
           "defaultConfiguration": "development"
