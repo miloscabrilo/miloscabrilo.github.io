@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Language } from '../../core/enums/language.enum';
+import { StorageService } from '../../core/services/storage.service';
+import { STORAGE_CONSTANTS } from '../../core/constants/storage.constants';
 
 @Component({
   selector: 'change-language',
@@ -10,10 +12,10 @@ import { Language } from '../../core/enums/language.enum';
 })
 export class ChangeLanguageComponent {
   public Language = Language;
-  constructor(private translate: TranslateService) {}
+  constructor(private translate: TranslateService, private storage: StorageService) {}
 
-  changeLanguage(lang: string) {
+  changeLanguage(lang: Language) {
     this.translate.use(lang);
-    localStorage.setItem('lang', lang);
+    this.storage.set(STORAGE_CONSTANTS.LOCAL_LANGUAGE_KEY, lang);
   }
 }
