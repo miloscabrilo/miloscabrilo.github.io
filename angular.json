@@ -7,7 +7,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "miloscabrilo": {
+    "miloscabrilo.github.io": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
