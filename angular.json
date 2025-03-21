@@ -7,7 +7,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "miloscabrilo.github.io": {
+    "demetra-frontend": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
