@@ -1,3 +1,30 @@
+
+.cover-image {
+  background-size: cover;
+  width: inherit;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+}
+
+.description {
+  padding: 8px 16px;
+}
+
+.site-intro {
+  border-radius: 16px;
+  width: 100%;
+  background-color: var(--demetra-gold);
+}
+
+
 /* From Uiverse.io by JkHuger */ 
 /* Default */
 .theme {
