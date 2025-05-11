@@ -1,1 +1,86 @@
+//@import 'src/assets/fonts/inter.scss';
+
 /* You can add global styles to this file, and also import other style files */
+:root {
+  /* --- -------- --- */
+  /* ---  COLORS  --- */
+  /* --- -------- --- */
+  --demetra-gold: #c5ad7f;
+  --demetra-blue: #2a2f4f;
+  --demetra-background: #f4f4f4;
+
+  --inter-regular-md-base: "Inter-Regular", "Roboto", "Helvetica Neue",
+    sans-serif;
+  --inter-medium-md-base: "Inter-Medium", "Roboto", "Helvetica Neue", sans-serif;
+  --inter-semibold-md-base: "Inter-SemiBold", "Roboto", "Helvetica Neue",
+    sans-serif;
+  --inter-bold-md-base: "Inter-Bold", "Roboto", "Helvetica Neue", sans-serif;
+
+  body {
+    margin: 0;
+    background-color: var(--demetra-background);
+  }
+
+  /* --- ------- --- */
+  /* ---  FONTS  --- */
+  /* --- ------- --- */
+  .style-h1,
+  .style-h2,
+  .style-h3,
+  .style-h4,
+  .style-h5,
+  .style-p,
+  .style-info {
+    margin: 0;
+    color: var(--demetra-blue);
+  }
+
+  .style-h1 {
+    font-size: 32px;
+    font-family: var(--inter-bold-md-base);
+  }
+
+  .style-h2 {
+    font-size: 28px;
+    font-family: var(--inter-bold-md-base);
+  }
+
+  .style-h3 {
+    font-size: 24px;
+    font-family: var(--inter-bold-md-base);
+  }
+
+  .style-h4 {
+    font-size: 20px;
+    font-family: var(--inter-bold-md-base);
+    letter-spacing: -0.32px;
+  }
+
+  .style-h5 {
+    font-size: 18px;
+    font-family: var(--inter-semibold-md-base);
+    letter-spacing: -0.2px;
+  }
+
+  .style-p {
+    font-size: 15px;
+    line-height: 1.4;
+    font-family: var(--inter-medium-md-base);
+
+    &.x-small {
+      font-size: 12px;
+    }
+  }
+
+  .style-info {
+    font-size: 14px;
+    font-family: var(--inter-medium-md-base);
+    line-height: 1.4;
+  }
+
+  .style-text {
+    font-size: 12px;
+    font-family: var(--inter-regular-md-base);
+    line-height: 1.4;
+  }
+}

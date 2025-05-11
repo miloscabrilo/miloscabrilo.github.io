@@ -4,10 +4,11 @@ import { STORAGE_CONSTANTS } from './core/constants/storage.constants';
 import { Language } from './core/enums/language.enum';
 import { ChangeLanguageComponent } from './components/change-language/change-language.component';
 import { StorageService } from './core/services/storage.service';
+import { HeaderComponent } from './components/header/header.component';
 
 @Component({
   selector: 'home',
-  imports: [TranslatePipe, ChangeLanguageComponent],
+  imports: [TranslatePipe, ChangeLanguageComponent, HeaderComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   standalone: true,

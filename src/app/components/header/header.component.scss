@@ -1,0 +1,24 @@
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  background-color: var(--demetra-background);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .header-logo {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.header-dots {
+  width: 36px;
+  height: 36px;
+  rotate: 90deg;
+}
