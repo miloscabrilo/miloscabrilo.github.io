@@ -1,4 +1,10 @@
 
+demetra-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
 .cover-image {
   background-size: cover;
   width: inherit;
