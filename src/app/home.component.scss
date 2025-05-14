@@ -21,11 +21,12 @@ demetra-header {
 }
 
 .description {
-  padding: 8px 16px;
+  padding: 8px 16px 16px;
 }
 
 .site-intro {
   border-radius: 16px;
+  border: 1px solid var(--demetra-blue);
   width: 100%;
   background-color: var(--demetra-gold);
 }
