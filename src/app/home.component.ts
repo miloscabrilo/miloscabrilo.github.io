@@ -11,7 +11,7 @@ import { AccordionSectionComponent } from './components/accordion-section/accord
   selector: 'home',
   imports: [
     TranslatePipe,
-    ChangeLanguageComponent,
+    // ChangeLanguageComponent,
     HeaderComponent,
     AccordionSectionComponent,
   ],

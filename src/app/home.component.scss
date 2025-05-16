@@ -37,7 +37,7 @@ accordion-section {
 }
 
 /* From Uiverse.io by JkHuger */ 
-/* Default */
+/* Default *//* 
 .theme {
     display: flex;
     align-items: center;
@@ -168,7 +168,7 @@ accordion-section {
     outline: transparent;
   }
   
-  /* Checked */
+  // Checked
   .theme__toggle:checked {
     background-color: hsl(198,90%,15%);
   }
@@ -242,3 +242,4 @@ accordion-section {
       box-shadow: 0 0 0 0.125em var(--primary);
     }
   }
+ */
