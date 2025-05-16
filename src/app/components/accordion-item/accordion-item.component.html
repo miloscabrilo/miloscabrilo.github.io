@@ -1,0 +1,16 @@
+<div class="accordion-item">
+  <!-- Title line -->
+  <div class="title-line" (click)="toggle()">
+    <img [src]="imageUrl" alt="icon" />
+    <h5 class="style-h5 title">{{ title | translate }}</h5>
+    <img [class.rotate-img]="isExpanded" src="assets/icons/arrow-down-24x24.svg" alt="arrow" />
+  </div>
+
+  <!-- Divider -->
+  <div *ngIf="isExpanded" class="divider"></div>
+
+  <!-- Description -->
+  <div *ngIf="isExpanded" class="description">
+    <p class="style-p x-small">{{ description | translate }}</p>
+  </div>
+</div>

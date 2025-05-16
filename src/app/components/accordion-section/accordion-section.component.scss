@@ -1,0 +1,12 @@
+.accordion-wrapper {
+  margin-top: 8px;
+  border-radius: 16px;
+  padding: 0 16px;
+  background-color: var(--demetra-white);
+
+  accordion-item:not(:first-child) {
+    border-top: 1.5px solid var(--demetra-background);
+    display: block;
+  }
+}
+  

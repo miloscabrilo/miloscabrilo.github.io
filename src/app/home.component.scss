@@ -5,19 +5,24 @@ demetra-header {
   z-index: 10;
 }
 
-.cover-image {
-  background-size: cover;
-  width: inherit;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-}
-
 .content-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 16px;
+  padding: 8px 16px;
+  gap: 16px;
+}
+
+accordion-section {
+  width: 100%;
+}
+
+.cover-image {
+  background-size: cover;
+  width: inherit;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
 }
 
 .description {
@@ -30,7 +35,6 @@ demetra-header {
   width: 100%;
   background-color: var(--demetra-gold);
 }
-
 
 /* From Uiverse.io by JkHuger */ 
 /* Default */

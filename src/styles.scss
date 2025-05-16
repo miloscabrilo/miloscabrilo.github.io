@@ -8,6 +8,7 @@
   --demetra-gold: #c5ad7f;
   --demetra-blue: #2a2f4f;
   --demetra-background: #f4f4f4;
+  --demetra-white: #ffffff;
 
   --inter-regular-md-base: "Inter-Regular", "Roboto", "Helvetica Neue",
     sans-serif;
@@ -52,20 +53,23 @@
 
   .style-h4 {
     font-size: 20px;
-    font-family: var(--inter-bold-md-base);
+    font-family: var(--inter-semibold-md-base);
     letter-spacing: -0.32px;
+    font-weight: 600;
   }
 
   .style-h5 {
     font-size: 18px;
-    font-family: var(--inter-semibold-md-base);
+    font-family: var(--inter-medium-md-base);
     letter-spacing: -0.2px;
+    font-weight: 500;
   }
 
   .style-p {
     font-size: 15px;
     line-height: 1.4;
-    font-family: var(--inter-medium-md-base);
+    font-family: var(--inter-regular-md-base);
+    font-weight: 400;
 
     &.x-small {
       font-size: 12px;

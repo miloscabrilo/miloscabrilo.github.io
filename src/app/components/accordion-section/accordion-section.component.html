@@ -1,0 +1,11 @@
+<h4 *ngIf="items.length" class="style-h4">{{ title | translate }}</h4>
+<div class="accordion-wrapper">
+  <ng-container *ngFor="let item of items">
+    <accordion-item
+      [imageUrl]="item.imageUrl"
+      [title]="item.title"
+      [description]="item.description"
+    >
+    </accordion-item>
+  </ng-container>
+</div>
