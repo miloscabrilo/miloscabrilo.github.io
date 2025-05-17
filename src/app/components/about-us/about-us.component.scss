@@ -21,11 +21,12 @@
       rotate: 270deg;
     }
   }
+}
 
-  .divider {
-    border-bottom: 0.5px solid var(--demetra-gold);
-    margin: 0 32px 0 44px;
-  }
+
+.divider {
+  border: 1.5px solid var(--demetra-background);
+  display: block;
 }
 
 .iframe-wrapper {

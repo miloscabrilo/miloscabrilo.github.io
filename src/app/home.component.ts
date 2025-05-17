@@ -7,6 +7,7 @@ import { StorageService } from './core/services/storage.service';
 import { HeaderComponent } from './components/header/header.component';
 import { AccordionSectionComponent } from './components/accordion-section/accordion-section.component';
 import { AboutUsComponent } from "./components/about-us/about-us.component";
+import { ACCORDION_ASSISTANCE, ACCORDION_SERVICES } from './core/constants/accordion-list.constants';
 
 @Component({
   selector: 'home',
@@ -22,44 +23,8 @@ import { AboutUsComponent } from "./components/about-us/about-us.component";
   standalone: true,
 })
 export class HomeComponent {
-  public items1: Array<{
-    imageUrl: string;
-    title: string;
-    description: string;
-  }> = [
-    {
-      imageUrl: 'assets/icons/computer-36x36.svg',
-      title: 'SECTION1.ACCORDION1.TITLE',
-      description: 'SECTION1.ACCORDION1.DESCRIPTION',
-    },
-    {
-      imageUrl: 'assets/icons/company-36x36.svg',
-      title: 'SECTION1.ACCORDION2.TITLE',
-      description: 'SECTION1.ACCORDION2.DESCRIPTION',
-    },
-    {
-      imageUrl: 'assets/icons/computer-36x36.svg',
-      title: 'SECTION1.ACCORDION3.TITLE',
-      description: 'SECTION1.ACCORDION3.DESCRIPTION',
-    },
-  ];
-
-  public items2: Array<{
-    imageUrl: string;
-    title: string;
-    description: string;
-  }> = [
-    {
-      imageUrl: 'assets/icons/company-36x36.svg',
-      title: 'SECTION2.ACCORDION1.TITLE',
-      description: 'SECTION2.ACCORDION1.DESCRIPTION',
-    },
-    {
-      imageUrl: 'assets/icons/computer-36x36.svg',
-      title: 'SECTION2.ACCORDION2.TITLE',
-      description: 'SECTION2.ACCORDION2.DESCRIPTION',
-    },
-  ];
+  public readonly items1 = ACCORDION_SERVICES;
+  public readonly items2 = ACCORDION_ASSISTANCE;
 
   constructor(
     private translate: TranslateService,
