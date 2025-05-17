@@ -6,6 +6,7 @@ import { ChangeLanguageComponent } from './components/change-language/change-lan
 import { StorageService } from './core/services/storage.service';
 import { HeaderComponent } from './components/header/header.component';
 import { AccordionSectionComponent } from './components/accordion-section/accordion-section.component';
+import { AboutUsComponent } from "./components/about-us/about-us.component";
 
 @Component({
   selector: 'home',
@@ -14,7 +15,8 @@ import { AccordionSectionComponent } from './components/accordion-section/accord
     // ChangeLanguageComponent,
     HeaderComponent,
     AccordionSectionComponent,
-  ],
+    AboutUsComponent,
+],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   standalone: true,
