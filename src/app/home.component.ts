@@ -8,6 +8,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { AccordionSectionComponent } from './components/accordion-section/accordion-section.component';
 import { AboutUsComponent } from "./components/about-us/about-us.component";
 import { ACCORDION_ASSISTANCE, ACCORDION_SERVICES } from './core/constants/accordion-list.constants';
+import { ClientsFeedbacksComponent } from "./components/clients-feedbacks/clients-feedbacks.component";
+import { FEEDBACK_LIST } from './core/constants/feedback-list.constants';
 
 @Component({
   selector: 'home',
@@ -17,6 +19,7 @@ import { ACCORDION_ASSISTANCE, ACCORDION_SERVICES } from './core/constants/accor
     HeaderComponent,
     AccordionSectionComponent,
     AboutUsComponent,
+    ClientsFeedbacksComponent
 ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -25,6 +28,7 @@ import { ACCORDION_ASSISTANCE, ACCORDION_SERVICES } from './core/constants/accor
 export class HomeComponent {
   public readonly items1 = ACCORDION_SERVICES;
   public readonly items2 = ACCORDION_ASSISTANCE;
+  public readonly feedbacks = FEEDBACK_LIST;
 
   constructor(
     private translate: TranslateService,

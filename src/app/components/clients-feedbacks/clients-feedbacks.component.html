@@ -1,0 +1,12 @@
+<h4 *ngIf="feedbacks.length" class="style-h4">
+  {{ "FEEDBACKS.TITLE" | translate }}
+</h4>
+<swiper-container class="content-wrapper" [spaceBetween]="8" [slidesPerView]="2.6">
+  <swiper-slide class="content" *ngFor="let feedback of feedbacks">
+    <div class="title">
+      <img [src]="getFeedbackAvatar(feedback.type)" alt="avatar" />
+      <h6 class="style-h6">{{ feedback.name | translate }}</h6>
+    </div>
+    <p class="style-p x-small">{{ feedback.text | translate }}</p>
+  </swiper-slide>
+</swiper-container>

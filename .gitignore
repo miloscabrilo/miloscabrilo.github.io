@@ -5,8 +5,8 @@
 /tmp
 /out-tsc
 /bazel-out
-.angular
-.vscode
+.angular/
+.vscode/
 
 # Node
 /node_modules
@@ -42,3 +42,5 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+/.nojekyll/*

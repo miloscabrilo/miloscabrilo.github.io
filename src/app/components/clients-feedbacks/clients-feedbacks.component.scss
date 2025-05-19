@@ -1,0 +1,23 @@
+.content {
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: var(--demetra-white);
+  height: auto;
+  box-sizing: border-box;
+
+  .title {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    min-height: 36px;
+  }
+}
+
+.content-wrapper {
+  background-color: var(--demetra-background);
+  margin-top: 8px;
+  overflow: visible;
+}
