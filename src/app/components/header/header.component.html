@@ -19,7 +19,7 @@
 <div class="popover" #popover [class.show]="isPopoverOpen">
   <div class="popover-row" (click)="openLanguageModal()">
     <h6 class="style-h6">{{ "POPOVER.LANGUAGE" | translate }}</h6>
-    <img src="assets/icons/en-24x24.svg" alt="lang" />
+    <img [src]="getSelectedLanguageIcon()" alt="lang" />
   </div>
   <div class="divider"></div>
   <div class="popover-row" (click)="openThemeModal()">
@@ -27,3 +27,9 @@
     <img src="assets/icons/light-mode-24x24.svg" alt="theme" />
   </div>
 </div>
+
+<language-modal
+  [isVisible]="showLangModal"
+  [selectedLanguage]="selectedLanguage"
+  (close)="onLangModalClosed()"
+></language-modal>

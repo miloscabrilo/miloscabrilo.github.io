@@ -1,0 +1,85 @@
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal {
+  background-color: var(--demetra-background);
+  width: 100%;
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  position: absolute;
+  bottom: 0;
+}
+
+.header {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+
+  .title {
+    flex-grow: 1;
+  }
+
+  img[alt="close"] {
+    cursor: pointer;
+  }
+}
+
+.content {
+  padding: 16px;
+  margin-bottom: 32px;
+
+  .language-form {
+    background-color: var(--demetra-white);
+    border-radius: 16px;
+    padding: 0 16px;
+  }
+
+  .language-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--demetra-background);
+    cursor: pointer;
+
+    .language-text {
+      flex-grow: 1;
+    }
+
+    input[type="radio"] {
+      appearance: none; // remove native style
+      width: 24px; // size
+      height: 24px;
+      border: 2px solid var(--demetra-blue);
+      border-radius: 50%;
+      position: relative;
+      outline: none;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+
+      &:checked::before {
+        content: "";
+        display: block;
+        width: 16px;
+        height: 16px;
+        background-color: var(--demetra-blue); // inner dot color
+        border-radius: 50%;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+      }
+    }
+  }
+}

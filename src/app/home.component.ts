@@ -19,7 +19,7 @@ import { FEEDBACK_LIST } from './core/constants/feedback-list.constants';
     HeaderComponent,
     AccordionSectionComponent,
     AboutUsComponent,
-    ClientsFeedbacksComponent
+    ClientsFeedbacksComponent,
 ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
