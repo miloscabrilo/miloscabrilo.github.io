@@ -27,8 +27,10 @@
     "FEEDBACK3.TEXT": "Seamless company registration and seal creation! Everything was handled professionally and on time—excellent service!",
     "POPOVER.LANGUAGE": "Language",
     "POPOVER.THEME": "Theme",
-    "HELLO": "Hello",
-    "MAIN.TITLE": "Main title",
+    "LANGUAGE.TITLE": "Select language",
     "LANGUAGE.ENGLISH": "English",
-    "LANGUAGE.MONTENEGRIN": "Montenegrin"
+    "LANGUAGE.MONTENEGRIN": "Montenegrin",
+    "LANGUAGE.RUSSIAN": "Russian",
+    "LANGUAGE.UKRAINIAN": "Ukrainian",
+    "LANGUAGE.TURKISH": "Turkish"
 }
