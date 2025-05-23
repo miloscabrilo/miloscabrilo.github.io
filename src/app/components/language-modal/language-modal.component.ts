@@ -16,7 +16,6 @@ export class LanguageModalComponent {
   @Input() public isVisible = false;
   @Input() public selectedLanguage: Language = Language.EN;
   @Output() public close = new EventEmitter<void>();
-  public Language = Language;
   public readonly languages = LANGUAGE_LIST;
 
   constructor(

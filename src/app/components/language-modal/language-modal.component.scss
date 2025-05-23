@@ -1,14 +1,12 @@
 .modal-backdrop {
   position: fixed; // <- this anchors it to the viewport
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background-color: rgba(0, 0, 0, 0.4); // backdrop effect
   display: flex;
   justify-content: center;
   align-items: flex-end; // or 'center' if you want it centered
   z-index: 1000; // ensure it's above other content
+  touch-action: none; // prevent interaction with the backdrop
 }
 
 .modal {
@@ -18,7 +16,7 @@
   border-top-right-radius: 32px;
   overflow: hidden;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
-  animation: slideUp 0.4s ease-out;
+  animation: slideUp 0.3s ease-out;
 }
 
 /* Slide animation */
@@ -31,7 +29,7 @@
   }
 }
 
-.header {
+.modal-header {
   padding: 16px;
   display: flex;
   justify-content: space-between;
@@ -47,7 +45,7 @@
   }
 }
 
-.content {
+.modal-content {
   padding: 16px;
   margin-bottom: 32px;
 
