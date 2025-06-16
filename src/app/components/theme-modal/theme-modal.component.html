@@ -1,0 +1,26 @@
+<div class="modal-backdrop" (click)="closeModal()" *ngIf="isVisible">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <img src="assets/icons/theme-36x36.svg" alt="theme" />
+        <h5 class="style-h5 title">{{ "THEME.TITLE" | translate }}</h5>
+        <img src="assets/icons/close-24x24.svg" alt="close" (click)="closeModal()" />
+      </div>
+  
+      <div class="modal-content">
+        <form class="theme-form">
+          <label *ngFor="let theme of themes" class="theme-option">
+            <img [src]="getThemeIcon(theme.value)" alt="theme" />
+            <h6 class="style-h6 theme-text">{{ getThemeName(theme.value) | translate }}</h6>
+            <input
+              type="radio"
+              name="theme"
+              [value]="theme.value"
+              [checked]="theme.value === selectedTheme"
+              (change)="selectTheme(theme.value)"
+            />
+          </label>
+        </form>
+      </div>
+    </div>
+  </div>
+  

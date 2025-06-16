@@ -26,11 +26,14 @@
   "FEEDBACK3.NAME": "Анонім",
   "FEEDBACK3.TEXT": "Безперебійна реєстрація компанії та виготовлення печатки! Все було виконано професійно і вчасно — відмінний сервіс!",
   "POPOVER.LANGUAGE": "Мова",
-  "POPOVER.THEME": "Тема",
-  "LANGUAGE.TITLE": "Оберіть мову",
+  "LANGUAGE.TITLE": "Виберіть мову",
   "LANGUAGE.ENGLISH": "Англійська",
   "LANGUAGE.MONTENEGRIN": "Чорногорська",
   "LANGUAGE.RUSSIAN": "Російська",
   "LANGUAGE.UKRAINIAN": "Українська",
-  "LANGUAGE.TURKISH": "Турецька"
+  "LANGUAGE.TURKISH": "Турецька",
+  "POPOVER.THEME": "Тема",
+  "THEME.TITLE": "Виберіть тему",
+  "THEME.DARK": "Темний",
+  "THEME.LIGHT": "Світло"
 }

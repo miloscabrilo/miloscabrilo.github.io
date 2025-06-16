@@ -26,11 +26,14 @@
   "FEEDBACK3.NAME": "Anonim",
   "FEEDBACK3.TEXT": "Sorunsuz şirket kaydı ve mühür oluşturma! Her şey profesyonelce ve zamanında halledildi—mükemmel hizmet!",
   "POPOVER.LANGUAGE": "Dil",
-  "POPOVER.THEME": "Tema",
   "LANGUAGE.TITLE": "Dil seçin",
   "LANGUAGE.ENGLISH": "İngilizce",
   "LANGUAGE.MONTENEGRIN": "Karadağca",
   "LANGUAGE.RUSSIAN": "Rusça",
   "LANGUAGE.UKRAINIAN": "Ukraynaca",
-  "LANGUAGE.TURKISH": "Türkçe"
+  "LANGUAGE.TURKISH": "Türkçe",
+  "POPOVER.THEME": "Tema",
+  "THEME.TITLE": "Tema seçin",
+  "THEME.DARK": "Karanlık",
+  "THEME.LIGHT": "Işık"
 }

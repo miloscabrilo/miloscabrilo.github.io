@@ -24,7 +24,7 @@
   <div class="divider"></div>
   <div class="popover-row" (click)="openThemeModal()">
     <h6 class="style-h6">{{ "POPOVER.THEME" | translate }}</h6>
-    <img src="assets/icons/light-mode-24x24.svg" alt="theme" />
+    <img [src]="getSelectedThemeIcon()" alt="theme" />
   </div>
 </div>
 
@@ -33,3 +33,8 @@
   [selectedLanguage]="selectedLanguage"
   (close)="onLangModalClosed()"
 ></language-modal>
+<theme-modal
+  [isVisible]="showThemeModal"
+  [selectedTheme]="selectedTheme"
+  (close)="onThemeModalClosed()"
+></theme-modal>

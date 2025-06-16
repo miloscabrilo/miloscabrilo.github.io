@@ -17,12 +17,12 @@ export class ClientsFeedbacksComponent {
   public getFeedbackAvatar(feedbackType: FeedbackType): string {
     switch (feedbackType) {
       case FeedbackType.PERSON:
-        return 'assets/icons/person-24x24.svg';
+        return 'assets/icons/light/person-24x24.svg';
       case FeedbackType.ORGANIZATION:
-        return 'assets/icons/organization-24x24.svg';
+        return 'assets/icons/light/organization-24x24.svg';
       case FeedbackType.ANONYMOUS:
       default:
-        return 'assets/icons/anonymous-24x24.svg';
+        return 'assets/icons/light/anonymous-24x24.svg';
     }
   }
 }

@@ -1,0 +1,54 @@
+import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
+import { Theme } from '../../core/enums/theme.enum';
+import { THEME_LIST } from '../../core/constants/theme-list.constants';
+import { STORAGE_CONSTANTS } from '../../core/constants/storage.constants';
+import { StorageService } from '../../core/services/storage.service';
+
+@Component({
+  selector: 'theme-modal',
+  imports: [TranslatePipe, CommonModule],
+  templateUrl: './theme-modal.component.html',
+  styleUrl: './theme-modal.component.scss'
+})
+export class ThemeModalComponent {
+  @Input() public isVisible = false;
+  @Input() public selectedTheme: Theme = Theme.LIGHT;
+  @Output() public close = new EventEmitter<void>();
+  public readonly themes = THEME_LIST;
+
+  constructor(
+    private storage: StorageService,
+  ) {}
+
+  public async selectTheme(theme: Theme): Promise<void> {
+    console.info('App theme is', theme);
+    await this.storage.set(STORAGE_CONSTANTS.LOCAL_THEME_KEY, theme);
+    this.close.emit();
+  }
+
+  public closeModal(): void {
+    this.close.emit();
+  }
+
+  public getThemeIcon(theme: Theme): string {
+    switch (theme) {
+      case Theme.DARK:
+        return 'assets/icons/dark-mode-24x24.svg';
+      case Theme.LIGHT:
+      default:
+        return 'assets/icons/light-mode-24x24.svg';
+    }
+  }
+
+  public getThemeName(theme: Theme): string {
+    switch (theme) {
+      case Theme.DARK:
+        return 'THEME.DARK';
+      case Theme.LIGHT:
+      default:
+        return 'THEME.LIGHT';
+    }
+  }
+}

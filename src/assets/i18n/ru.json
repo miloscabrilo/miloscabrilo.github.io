@@ -26,11 +26,14 @@
   "FEEDBACK3.NAME": "Аноним",
   "FEEDBACK3.TEXT": "Безупречная регистрация компании и изготовление печати! Всё было выполнено профессионально и в срок — отличный сервис!",
   "POPOVER.LANGUAGE": "Язык",
-  "POPOVER.THEME": "Тема",
   "LANGUAGE.TITLE": "Выберите язык",
   "LANGUAGE.ENGLISH": "Английский",
   "LANGUAGE.MONTENEGRIN": "Черногорский",
   "LANGUAGE.RUSSIAN": "Русский",
   "LANGUAGE.UKRAINIAN": "Украинский",
-  "LANGUAGE.TURKISH": "Турецкий"
+  "LANGUAGE.TURKISH": "Турецкий",
+  "POPOVER.THEME": "Тема",
+  "THEME.TITLE": "Выберите theme",
+  "THEME.DARK": "Темный",
+  "THEME.LIGHT": "Светлый"
 }

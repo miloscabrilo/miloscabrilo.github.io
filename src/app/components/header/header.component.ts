@@ -4,10 +4,12 @@ import { LanguageModalComponent } from '../language-modal/language-modal.compone
 import { StorageService } from '../../core/services/storage.service';
 import { STORAGE_CONSTANTS } from '../../core/constants/storage.constants';
 import { Language } from '../../core/enums/language.enum';
+import { Theme } from '../../core/enums/theme.enum';
+import { ThemeModalComponent } from '../theme-modal/theme-modal.component';
 
 @Component({
   selector: 'demetra-header',
-  imports: [TranslatePipe, LanguageModalComponent],
+  imports: [TranslatePipe, LanguageModalComponent, ThemeModalComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
@@ -16,10 +18,13 @@ export class HeaderComponent {
   @ViewChild('triggerButton') triggerButton!: ElementRef;
   public isPopoverOpen: boolean = false;
   public showLangModal: boolean = false;
+  public showThemeModal: boolean = false;
   public selectedLanguage!: Language;
+  public selectedTheme!: Theme;
 
   constructor(private storage: StorageService) {
     this.loadStoredLanguage();
+    this.loadStoredTheme();
   }
 
   @HostListener('document:click', ['$event'])
@@ -54,6 +59,16 @@ export class HeaderComponent {
     }
   }
 
+  public getSelectedThemeIcon(): string {
+    switch (this.selectedTheme) {
+      case Theme.DARK:
+        return 'assets/icons/dark-mode-24x24.svg';
+      case Theme.LIGHT:
+      default:
+        return 'assets/icons/light-mode-24x24.svg';
+    }
+  }
+
   public openLanguageModal(): void {
     console.log('Language modal opened');
     this.showLangModal = true;
@@ -62,6 +77,7 @@ export class HeaderComponent {
 
   public openThemeModal(): void {
     console.log('Theme modal opened');
+    this.showThemeModal = true;
     this.togglePopover();
   }
 
@@ -70,11 +86,24 @@ export class HeaderComponent {
     this.loadStoredLanguage();
   }
 
+  public onThemeModalClosed() {
+    this.showThemeModal = false;
+    this.loadStoredTheme();
+  }
+
   private async loadStoredLanguage(): Promise<void> {
     const storedLanguage = await this.storage.get(
       STORAGE_CONSTANTS.LOCAL_LANGUAGE_KEY
     );
     this.selectedLanguage = storedLanguage || Language.EN;
     console.info('App language is', this.selectedLanguage);
+  }
+
+  private async loadStoredTheme(): Promise<void> {
+    const storedTheme = await this.storage.get(
+      STORAGE_CONSTANTS.LOCAL_THEME_KEY
+    );
+    this.selectedTheme = storedTheme || Theme.LIGHT;
+    console.info('App theme is', this.selectedTheme);
   }
 }

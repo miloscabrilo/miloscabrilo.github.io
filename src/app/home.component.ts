@@ -10,6 +10,7 @@ import { AboutUsComponent } from "./components/about-us/about-us.component";
 import { ACCORDION_ASSISTANCE, ACCORDION_SERVICES } from './core/constants/accordion-list.constants';
 import { ClientsFeedbacksComponent } from "./components/clients-feedbacks/clients-feedbacks.component";
 import { FEEDBACK_LIST } from './core/constants/feedback-list.constants';
+import { Theme } from './core/enums/theme.enum';
 
 @Component({
   selector: 'home',
@@ -35,6 +36,7 @@ export class HomeComponent {
     private storage: StorageService
   ) {
     this.initAppLanguage();
+    this.initAppTheme();
   }
 
   public async initAppLanguage(): Promise<void> {
@@ -43,5 +45,12 @@ export class HomeComponent {
       Language.EN;
     this.translate.use(predefinedLang);
     console.info('App language is', predefinedLang);
+  }
+
+  public async initAppTheme(): Promise<void> {
+    const predefinedTheme: string =
+      (await this.storage.get(STORAGE_CONSTANTS.LOCAL_THEME_KEY)) ||
+      Theme.LIGHT;
+    console.info('App theme is', predefinedTheme);
   }
 }
