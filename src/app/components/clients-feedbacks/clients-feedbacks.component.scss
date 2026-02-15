@@ -16,6 +16,10 @@
   }
 }
 
+swiper-container::part(container) {
+  overflow: visible;
+}
+
 .content-wrapper {
   background-color: var(--demetra-background);
   margin-top: 8px;
