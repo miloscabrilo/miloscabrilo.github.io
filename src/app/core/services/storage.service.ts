@@ -1,42 +1,38 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StorageService {
+  private readonly storage = inject(Storage);
   private _storage!: Storage;
 
-  constructor(private storage: Storage) {}
-
-  public async init(): Promise<void> {
+  async init(): Promise<void> {
     if (this._storage != null) {
       return;
     }
 
-    // If using, define drivers here: await this.storage.defineDriver(/*...*/);
     const storage = await this.storage.create();
     this._storage = storage;
   }
 
-  // Create and expose methods that users of this service can
-  // call, for example:
-  public async set(key: string, value: any): Promise<any> {
+  async set(key: string, value: unknown): Promise<unknown> {
     await this.init();
     return this._storage.set(key, value);
   }
 
-  public async get(key: string): Promise<any> {
+  async get(key: string): Promise<unknown> {
     await this.init();
     return this._storage?.get(key);
   }
 
-  public async remove(key: string): Promise<any> {
+  async remove(key: string): Promise<void> {
     await this.init();
     return this._storage?.remove(key);
   }
 
-  public async keys(): Promise<string[]> {
+  async keys(): Promise<string[]> {
     await this.init();
     return this._storage?.keys();
   }

@@ -1,4 +1,4 @@
-<div class="modal-backdrop" (click)="closeModal()" *ngIf="isVisible">
+<div class="modal-backdrop" (click)="closeModal()" *ngIf="isVisible()">
   <div class="modal" (click)="$event.stopPropagation()">
     <div class="modal-header">
       <img src="assets/icons/language-36x36.svg" alt="lang" />
@@ -15,7 +15,7 @@
             type="radio"
             name="language"
             [value]="lang.value"
-            [checked]="lang.value === selectedLanguage"
+            [checked]="lang.value === selectedLanguage()"
             (change)="selectLanguage(lang.value)"
           />
         </label>

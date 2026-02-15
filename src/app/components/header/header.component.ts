@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, inject, signal, ViewChild } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 import { LanguageModalComponent } from '../language-modal/language-modal.component';
 import { StorageService } from '../../core/services/storage.service';
@@ -12,39 +12,43 @@ import { ThemeModalComponent } from '../theme-modal/theme-modal.component';
   imports: [TranslatePipe, LanguageModalComponent, ThemeModalComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
+  standalone: true,
 })
 export class HeaderComponent {
+  private readonly storage = inject(StorageService);
+
   @ViewChild('popover') popover!: ElementRef;
   @ViewChild('triggerButton') triggerButton!: ElementRef;
-  public isPopoverOpen: boolean = false;
-  public showLangModal: boolean = false;
-  public showThemeModal: boolean = false;
-  public selectedLanguage!: Language;
-  public selectedTheme!: Theme;
 
-  constructor(private storage: StorageService) {
+  readonly isPopoverOpen = signal(false);
+  readonly showLangModal = signal(false);
+  readonly showThemeModal = signal(false);
+  readonly selectedLanguage = signal<Language>(Language.EN);
+  readonly selectedTheme = signal<Theme>(Theme.LIGHT);
+
+  constructor() {
     this.loadStoredLanguage();
     this.loadStoredTheme();
   }
 
   @HostListener('document:click', ['$event'])
-  private handleClickOutside(event: MouseEvent) {
+  protected handleClickOutside(event: MouseEvent) {
     const target = event.target as HTMLElement;
     if (
-      this.isPopoverOpen &&
+      this.isPopoverOpen() &&
       !this.popover.nativeElement.contains(target) &&
       !this.triggerButton.nativeElement.contains(target)
     ) {
-      this.isPopoverOpen = false;
+      this.isPopoverOpen.set(false);
     }
   }
 
-  public togglePopover() {
-    this.isPopoverOpen = !this.isPopoverOpen;
+  togglePopover() {
+    this.isPopoverOpen.update(v => !v);
   }
 
-  public getSelectedLanguageIcon(): string {
-    switch (this.selectedLanguage) {
+  getSelectedLanguageIcon(): string {
+    switch (this.selectedLanguage()) {
       case Language.ME:
         return 'assets/icons/me-24x24.svg';
       case Language.UA:
@@ -59,8 +63,8 @@ export class HeaderComponent {
     }
   }
 
-  public getSelectedThemeIcon(): string {
-    switch (this.selectedTheme) {
+  getSelectedThemeIcon(): string {
+    switch (this.selectedTheme()) {
       case Theme.DARK:
         return 'assets/icons/dark-mode-24x24.svg';
       case Theme.LIGHT:
@@ -69,25 +73,25 @@ export class HeaderComponent {
     }
   }
 
-  public openLanguageModal(): void {
+  openLanguageModal(): void {
     console.log('Language modal opened');
-    this.showLangModal = true;
+    this.showLangModal.set(true);
     this.togglePopover();
   }
 
-  public openThemeModal(): void {
+  openThemeModal(): void {
     console.log('Theme modal opened');
-    this.showThemeModal = true;
+    this.showThemeModal.set(true);
     this.togglePopover();
   }
 
-  public onLangModalClosed() {
-    this.showLangModal = false;
+  onLangModalClosed() {
+    this.showLangModal.set(false);
     this.loadStoredLanguage();
   }
 
-  public onThemeModalClosed() {
-    this.showThemeModal = false;
+  onThemeModalClosed() {
+    this.showThemeModal.set(false);
     this.loadStoredTheme();
   }
 
@@ -95,15 +99,15 @@ export class HeaderComponent {
     const storedLanguage = await this.storage.get(
       STORAGE_CONSTANTS.LOCAL_LANGUAGE_KEY
     );
-    this.selectedLanguage = storedLanguage || Language.EN;
-    console.info('App language is', this.selectedLanguage);
+    this.selectedLanguage.set((storedLanguage as Language) || Language.EN);
+    console.info('App language is', this.selectedLanguage());
   }
 
   private async loadStoredTheme(): Promise<void> {
     const storedTheme = await this.storage.get(
       STORAGE_CONSTANTS.LOCAL_THEME_KEY
     );
-    this.selectedTheme = storedTheme || Theme.LIGHT;
-    console.info('App theme is', this.selectedTheme);
+    this.selectedTheme.set((storedTheme as Theme) || Theme.LIGHT);
+    console.info('App theme is', this.selectedTheme());
   }
 }

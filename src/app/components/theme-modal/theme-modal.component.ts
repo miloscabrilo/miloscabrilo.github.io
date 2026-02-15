@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 import { Theme } from '../../core/enums/theme.enum';
 import { THEME_LIST } from '../../core/constants/theme-list.constants';
@@ -10,29 +10,28 @@ import { StorageService } from '../../core/services/storage.service';
   selector: 'theme-modal',
   imports: [TranslatePipe, CommonModule],
   templateUrl: './theme-modal.component.html',
-  styleUrl: './theme-modal.component.scss'
+  styleUrl: './theme-modal.component.scss',
+  standalone: true,
 })
 export class ThemeModalComponent {
-  @Input() public isVisible = false;
-  @Input() public selectedTheme: Theme = Theme.LIGHT;
-  @Output() public close = new EventEmitter<void>();
-  public readonly themes = THEME_LIST;
+  private readonly storage = inject(StorageService);
 
-  constructor(
-    private storage: StorageService,
-  ) {}
+  readonly isVisible = input<boolean>(false);
+  readonly selectedTheme = input<Theme>(Theme.LIGHT);
+  readonly close = output<void>();
+  readonly themes = THEME_LIST;
 
-  public async selectTheme(theme: Theme): Promise<void> {
+  async selectTheme(theme: Theme): Promise<void> {
     console.info('App theme is', theme);
     await this.storage.set(STORAGE_CONSTANTS.LOCAL_THEME_KEY, theme);
     this.close.emit();
   }
 
-  public closeModal(): void {
+  closeModal(): void {
     this.close.emit();
   }
 
-  public getThemeIcon(theme: Theme): string {
+  getThemeIcon(theme: Theme): string {
     switch (theme) {
       case Theme.DARK:
         return 'assets/icons/dark-mode-24x24.svg';
@@ -42,7 +41,7 @@ export class ThemeModalComponent {
     }
   }
 
-  public getThemeName(theme: Theme): string {
+  getThemeName(theme: Theme): string {
     switch (theme) {
       case Theme.DARK:
         return 'THEME.DARK';
