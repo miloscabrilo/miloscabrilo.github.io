@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { Language } from '../../core/enums/language.enum';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { StorageService } from '../../core/services/storage.service';
@@ -11,30 +11,29 @@ import { LANGUAGE_LIST } from '../../core/constants/language-list.constants';
   imports: [TranslatePipe, CommonModule],
   templateUrl: './language-modal.component.html',
   styleUrl: './language-modal.component.scss',
+  standalone: true,
 })
 export class LanguageModalComponent {
-  @Input() public isVisible = false;
-  @Input() public selectedLanguage: Language = Language.EN;
-  @Output() public close = new EventEmitter<void>();
-  public readonly languages = LANGUAGE_LIST;
+  private readonly translate = inject(TranslateService);
+  private readonly storage = inject(StorageService);
 
-  constructor(
-    private translate: TranslateService,
-    private storage: StorageService,
-  ) {}
+  readonly isVisible = input<boolean>(false);
+  readonly selectedLanguage = input<Language>(Language.EN);
+  readonly close = output<void>();
+  readonly languages = LANGUAGE_LIST;
 
-  public async selectLanguage(lang: Language): Promise<void> {
+  async selectLanguage(lang: Language): Promise<void> {
     this.translate.use(lang);
     console.info('App language is', lang);
     await this.storage.set(STORAGE_CONSTANTS.LOCAL_LANGUAGE_KEY, lang);
     this.close.emit();
   }
 
-  public closeModal(): void {
+  closeModal(): void {
     this.close.emit();
   }
 
-  public getLanguageIcon(lang: Language): string {
+  getLanguageIcon(lang: Language): string {
     switch (lang) {
       case Language.ME:
         return 'assets/icons/me-24x24.svg';
@@ -50,7 +49,7 @@ export class LanguageModalComponent {
     }
   }
 
-  public getLanguageName(lang: Language): string {
+  getLanguageName(lang: Language): string {
     switch (lang) {
       case Language.ME:
         return 'LANGUAGE.MONTENEGRIN';

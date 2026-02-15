@@ -1,4 +1,4 @@
-<div class="modal-backdrop" (click)="closeModal()" *ngIf="isVisible">
+<div class="modal-backdrop" (click)="closeModal()" *ngIf="isVisible()">
     <div class="modal" (click)="$event.stopPropagation()">
       <div class="modal-header">
         <img src="assets/icons/theme-36x36.svg" alt="theme" />
@@ -15,7 +15,7 @@
               type="radio"
               name="theme"
               [value]="theme.value"
-              [checked]="theme.value === selectedTheme"
+              [checked]="theme.value === selectedTheme()"
               (change)="selectTheme(theme.value)"
             />
           </label>

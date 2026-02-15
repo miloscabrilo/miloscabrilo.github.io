@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, Input } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, input } from '@angular/core';
 import { Feedback } from '../../core/interfaces/feedback.interface';
 import { FeedbackType } from '../../core/enums/feedback-type.enum';
 import { TranslatePipe } from '@ngx-translate/core';
@@ -10,11 +10,12 @@ import { CommonModule } from '@angular/common';
   templateUrl: './clients-feedbacks.component.html',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   styleUrl: './clients-feedbacks.component.scss',
+  standalone: true,
 })
 export class ClientsFeedbacksComponent {
-  @Input() public feedbacks: Feedback[] = [];
+  readonly feedbacks = input<Feedback[]>([]);
 
-  public getFeedbackAvatar(feedbackType: FeedbackType): string {
+  getFeedbackAvatar(feedbackType: FeedbackType): string {
     switch (feedbackType) {
       case FeedbackType.PERSON:
         return 'assets/icons/light/person-24x24.svg';

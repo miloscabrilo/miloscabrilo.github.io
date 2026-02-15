@@ -1,6 +1,6 @@
 <div class="swiper-container">
   <div class="swiper-wrapper">
-    <div class="swiper-slide" *ngFor="let image of images">
+    <div class="swiper-slide" *ngFor="let image of images()">
       <img [src]="image" alt="Image" class="slider-image" />
     </div>
   </div>
