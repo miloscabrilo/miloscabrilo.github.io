@@ -28,7 +28,7 @@ export class HeaderComponent {
   }
 
   @HostListener('document:click', ['$event'])
-  private handleClickOutside(event: MouseEvent) {
+  protected handleClickOutside(event: MouseEvent) {
     const target = event.target as HTMLElement;
     if (
       this.isPopoverOpen &&
