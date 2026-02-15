@@ -1,5 +1,4 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import Swiper from 'swiper';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 
@@ -9,10 +8,9 @@ Swiper.use([Navigation, Pagination, Scrollbar, A11y]);
   selector: 'image-slider',
   templateUrl: './image-slider.component.html',
   styleUrl: './image-slider.component.scss',
-  imports: [CommonModule],
   standalone: true,
 })
-export class ImageSliderComponent implements OnInit {
+export class ImageSliderComponent {
   readonly images = signal<string[]>([
     'assets/image/demetra1.png',
     'assets/image/demetra2.png',
@@ -45,6 +43,4 @@ export class ImageSliderComponent implements OnInit {
     pagination: { clickable: true },
     loop: true,
   };
-
-  ngOnInit(): void {}
 }

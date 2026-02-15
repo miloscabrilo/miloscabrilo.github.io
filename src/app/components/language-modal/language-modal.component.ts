@@ -3,12 +3,11 @@ import { Language } from '../../core/enums/language.enum';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { StorageService } from '../../core/services/storage.service';
 import { STORAGE_CONSTANTS } from '../../core/constants/storage.constants';
-import { CommonModule } from '@angular/common';
 import { LANGUAGE_LIST } from '../../core/constants/language-list.constants';
 
 @Component({
   selector: 'language-modal',
-  imports: [TranslatePipe, CommonModule],
+  imports: [TranslatePipe],
   templateUrl: './language-modal.component.html',
   styleUrl: './language-modal.component.scss',
   standalone: true,

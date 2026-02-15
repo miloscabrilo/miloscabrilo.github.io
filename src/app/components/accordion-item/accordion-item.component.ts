@@ -1,13 +1,11 @@
-import { CommonModule } from '@angular/common';
 import { Component, input, signal } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'accordion-item',
-  imports: [TranslatePipe, CommonModule],
+  imports: [TranslatePipe],
   templateUrl: './accordion-item.component.html',
   styleUrl: './accordion-item.component.scss',
-  standalone: true,
 })
 export class AccordionItemComponent {
   readonly imageUrl = input<string>('');

@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, inject, signal, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, signal, viewChild } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 import { LanguageModalComponent } from '../language-modal/language-modal.component';
 import { StorageService } from '../../core/services/storage.service';
@@ -13,12 +13,15 @@ import { ThemeModalComponent } from '../theme-modal/theme-modal.component';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
   standalone: true,
+  host: {
+    '(document:click)': 'handleClickOutside($event)',
+  },
 })
 export class HeaderComponent {
   private readonly storage = inject(StorageService);
 
-  @ViewChild('popover') popover!: ElementRef;
-  @ViewChild('triggerButton') triggerButton!: ElementRef;
+  readonly popover = viewChild.required<ElementRef>('popover');
+  readonly triggerButton = viewChild.required<ElementRef>('triggerButton');
 
   readonly isPopoverOpen = signal(false);
   readonly showLangModal = signal(false);
@@ -31,13 +34,12 @@ export class HeaderComponent {
     this.loadStoredTheme();
   }
 
-  @HostListener('document:click', ['$event'])
   protected handleClickOutside(event: MouseEvent) {
     const target = event.target as HTMLElement;
     if (
       this.isPopoverOpen() &&
-      !this.popover.nativeElement.contains(target) &&
-      !this.triggerButton.nativeElement.contains(target)
+      !this.popover().nativeElement.contains(target) &&
+      !this.triggerButton().nativeElement.contains(target)
     ) {
       this.isPopoverOpen.set(false);
     }

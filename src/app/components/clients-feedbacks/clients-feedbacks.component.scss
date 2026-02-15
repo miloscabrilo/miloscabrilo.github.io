@@ -16,12 +16,17 @@
   }
 }
 
-swiper-container::part(container) {
-  overflow: visible;
-}
-
 .content-wrapper {
   background-color: var(--demetra-background);
   margin-top: 8px;
   overflow: visible;
+}
+
+swiper-container::part(bullet-active) {
+  background-color: var(--demetra-blue);
+}
+
+swiper-container::part(pagination) {
+  position: static;
+  margin-top: 8px;
 }

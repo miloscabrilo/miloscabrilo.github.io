@@ -2,11 +2,10 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, input } from '@angular/core';
 import { Feedback } from '../../core/interfaces/feedback.interface';
 import { FeedbackType } from '../../core/enums/feedback-type.enum';
 import { TranslatePipe } from '@ngx-translate/core';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'clients-feedbacks',
-  imports: [TranslatePipe, CommonModule],
+  imports: [TranslatePipe],
   templateUrl: './clients-feedbacks.component.html',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   styleUrl: './clients-feedbacks.component.scss',

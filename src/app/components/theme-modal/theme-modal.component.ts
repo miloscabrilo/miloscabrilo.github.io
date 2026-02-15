@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component, inject, input, output } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 import { Theme } from '../../core/enums/theme.enum';
@@ -8,10 +7,9 @@ import { StorageService } from '../../core/services/storage.service';
 
 @Component({
   selector: 'theme-modal',
-  imports: [TranslatePipe, CommonModule],
+  imports: [TranslatePipe],
   templateUrl: './theme-modal.component.html',
   styleUrl: './theme-modal.component.scss',
-  standalone: true,
 })
 export class ThemeModalComponent {
   private readonly storage = inject(StorageService);
