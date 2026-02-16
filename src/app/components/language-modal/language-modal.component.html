@@ -2,7 +2,7 @@
   <div class="modal-backdrop" (click)="closeModal()">
     <div class="modal" (click)="$event.stopPropagation()">
       <div class="modal-header">
-        <img src="assets/icons/language-36x36.svg" alt="lang" />
+        <img [src]="'assets/icons/' + themeService.iconFolder() + '/language-36x36.svg'" alt="lang" />
         <h5 class="style-h5 title">{{ "LANGUAGE.TITLE" | translate }}</h5>
         <img src="assets/icons/close-24x24.svg" alt="close" (click)="closeModal()" />
       </div>

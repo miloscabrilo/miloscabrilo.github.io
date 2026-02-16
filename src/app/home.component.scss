@@ -35,6 +35,10 @@ clients-feedbacks {
   border: 1px solid var(--demetra-blue);
   width: 100%;
   background-color: var(--demetra-gold);
+  &.dark {
+    background-color: var(--demetra-black);
+    border: 1px solid var(--demetra-gold);
+  }
 }
 
 /* From Uiverse.io by JkHuger */

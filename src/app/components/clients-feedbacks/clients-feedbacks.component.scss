@@ -23,7 +23,7 @@
 }
 
 swiper-container::part(bullet-active) {
-  background-color: var(--demetra-blue);
+  background-color: var(--demetra-text-color);
 }
 
 swiper-container::part(pagination) {

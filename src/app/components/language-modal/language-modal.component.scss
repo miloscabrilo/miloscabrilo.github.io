@@ -72,7 +72,7 @@
       appearance: none; // remove native style
       width: 24px; // size
       height: 24px;
-      border: 2px solid var(--demetra-blue);
+      border: 2px solid var(--demetra-text-color);
       border-radius: 50%;
       position: relative;
       outline: none;
@@ -84,7 +84,7 @@
         display: block;
         width: 16px;
         height: 16px;
-        background-color: var(--demetra-blue); // inner dot color
+        background-color: var(--demetra-text-color);
         border-radius: 50%;
         position: absolute;
         top: 2px;

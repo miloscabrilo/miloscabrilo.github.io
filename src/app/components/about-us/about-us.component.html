@@ -8,7 +8,7 @@
         href="https://maps.app.goo.gl/wazdLKMhTsJjeV2o8"
         target="_blank"
       >
-        <img src="assets/icons/light/location-pin-36x36.svg" alt="pin" />
+        <img [src]="themeService.getThemedIconPath('location-pin-36x36.svg')" alt="pin" />
         <h5 class="style-h5 title">{{ "SECTION3.LOCATION" | translate }}</h5>
         <img
           class="rotate-img"
@@ -23,7 +23,7 @@
     <!-- PHONE -->
     <div class="item">
       <a class="title-line" [href]="'tel:' + ('SECTION3.PHONE' | translate)">
-        <img src="assets/icons/light/phone-36x36.svg" alt="phone" />
+        <img [src]="themeService.getThemedIconPath('phone-36x36.svg')" alt="phone" />
         <h5 class="style-h5 title">{{ "SECTION3.PHONE" | translate }}</h5>
         <img
           class="rotate-img"
@@ -42,7 +42,7 @@
         target="_blank"
         rel="noopener noreferrer"
       >
-        <img src="assets/icons/light/instagram-36x36.svg" alt="instagram" />
+        <img [src]="themeService.getThemedIconPath('instagram-36x36.svg')" alt="instagram" />
         <h5 class="style-h5 title">{{ "SECTION3.INSTAGRAM" | translate }}</h5>
         <img
           class="rotate-img"
@@ -57,7 +57,7 @@
     <!-- EMAIL -->
     <div class="item">
       <a class="title-line" [href]="'mailto:' + ('SECTION3.EMAIL' | translate)">
-        <img src="assets/icons/light/email-36x36.svg" alt="email" />
+        <img [src]="themeService.getThemedIconPath('email-36x36.svg')" alt="email" />
         <h5 class="style-h5 title">{{ "SECTION3.EMAIL" | translate }}</h5>
         <img
           class="rotate-img"
@@ -70,6 +70,7 @@
 
   <div class="iframe-wrapper">
     <iframe
+      [class]="themeService.iconFolder()"
       src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d737.9039267552371!2d18.8393927!3d42.286726!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x134dd5d5bd5e5b61%3A0xf240d2398f7c36d5!2sDemetra!5e0!3m2!1sen!2srs!4v1747480775087!5m2!1sen!2srs"
       allowfullscreen="true"
       loading="lazy"

@@ -6,6 +6,7 @@ import { STORAGE_CONSTANTS } from '../../core/constants/storage.constants';
 import { Language } from '../../core/enums/language.enum';
 import { Theme } from '../../core/enums/theme.enum';
 import { ThemeModalComponent } from '../theme-modal/theme-modal.component';
+import { ThemeService } from '../../core/services/theme.service';
 
 @Component({
   selector: 'demetra-header',
@@ -19,6 +20,7 @@ import { ThemeModalComponent } from '../theme-modal/theme-modal.component';
 })
 export class HeaderComponent {
   private readonly storage = inject(StorageService);
+  readonly themeService = inject(ThemeService);
 
   readonly popover = viewChild.required<ElementRef>('popover');
   readonly triggerButton = viewChild.required<ElementRef>('triggerButton');
@@ -27,11 +29,9 @@ export class HeaderComponent {
   readonly showLangModal = signal(false);
   readonly showThemeModal = signal(false);
   readonly selectedLanguage = signal<Language>(Language.EN);
-  readonly selectedTheme = signal<Theme>(Theme.LIGHT);
 
   constructor() {
     this.loadStoredLanguage();
-    this.loadStoredTheme();
   }
 
   protected handleClickOutside(event: MouseEvent) {
@@ -66,12 +66,12 @@ export class HeaderComponent {
   }
 
   getSelectedThemeIcon(): string {
-    switch (this.selectedTheme()) {
+    switch (this.themeService.currentTheme()) {
       case Theme.DARK:
-        return 'assets/icons/dark-mode-24x24.svg';
+        return 'assets/icons/dark/dark-mode-24x24.svg';
       case Theme.LIGHT:
       default:
-        return 'assets/icons/light-mode-24x24.svg';
+        return 'assets/icons/light/light-mode-24x24.svg';
     }
   }
 
@@ -94,7 +94,6 @@ export class HeaderComponent {
 
   onThemeModalClosed() {
     this.showThemeModal.set(false);
-    this.loadStoredTheme();
   }
 
   private async loadStoredLanguage(): Promise<void> {
@@ -103,13 +102,5 @@ export class HeaderComponent {
     );
     this.selectedLanguage.set((storedLanguage as Language) || Language.EN);
     console.info('App language is', this.selectedLanguage());
-  }
-
-  private async loadStoredTheme(): Promise<void> {
-    const storedTheme = await this.storage.get(
-      STORAGE_CONSTANTS.LOCAL_THEME_KEY
-    );
-    this.selectedTheme.set((storedTheme as Theme) || Theme.LIGHT);
-    console.info('App theme is', this.selectedTheme());
   }
 }

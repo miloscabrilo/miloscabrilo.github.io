@@ -1,7 +1,9 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, input } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, input } from '@angular/core';
 import { Feedback } from '../../core/interfaces/feedback.interface';
 import { FeedbackType } from '../../core/enums/feedback-type.enum';
 import { TranslatePipe } from '@ngx-translate/core';
+import { ThemeService } from '../../core/services/theme.service';
+import { Theme } from '../../core/enums/theme.enum';
 
 @Component({
   selector: 'clients-feedbacks',
@@ -12,17 +14,23 @@ import { TranslatePipe } from '@ngx-translate/core';
   standalone: true,
 })
 export class ClientsFeedbacksComponent {
+  private readonly themeService = inject(ThemeService);
+
   readonly feedbacks = input<Feedback[]>([]);
 
   getFeedbackAvatar(feedbackType: FeedbackType): string {
     switch (feedbackType) {
       case FeedbackType.PERSON:
-        return 'assets/icons/light/person-24x24.svg';
+        return this.themeService.getThemedIconPath('person-24x24.svg');
       case FeedbackType.ORGANIZATION:
-        return 'assets/icons/light/organization-24x24.svg';
+        return this.themeService.getThemedIconPath('organization-24x24.svg');
       case FeedbackType.ANONYMOUS:
       default:
-        return 'assets/icons/light/anonymous-24x24.svg';
+        return this.themeService.getThemedIconPath('anonymous-24x24.svg');
     }
+  }
+
+  getTheme(): string {
+    return this.themeService.iconFolder();
   }
 }

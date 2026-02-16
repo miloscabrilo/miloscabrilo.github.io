@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
+import { ThemeService } from '../../core/services/theme.service';
 
 @Component({
   selector: 'about-us',
@@ -8,4 +9,6 @@ import { TranslatePipe } from '@ngx-translate/core';
   styleUrl: './about-us.component.scss',
   standalone: true,
 })
-export class AboutUsComponent {}
+export class AboutUsComponent {
+  readonly themeService = inject(ThemeService);
+}

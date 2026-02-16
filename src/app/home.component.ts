@@ -9,7 +9,7 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ClientsFeedbacksComponent } from './components/clients-feedbacks/clients-feedbacks.component';
 import { ACCORDION_ASSISTANCE, ACCORDION_SERVICES } from './core/constants/accordion-list.constants';
 import { FEEDBACK_LIST } from './core/constants/feedback-list.constants';
-import { Theme } from './core/enums/theme.enum';
+import { ThemeService } from './core/services/theme.service';
 
 @Component({
   selector: 'home',
@@ -27,6 +27,7 @@ import { Theme } from './core/enums/theme.enum';
 export class HomeComponent {
   private readonly translate = inject(TranslateService);
   private readonly storage = inject(StorageService);
+  readonly themeService = inject(ThemeService);
 
   readonly items1 = ACCORDION_SERVICES;
   readonly items2 = ACCORDION_ASSISTANCE;
@@ -34,7 +35,10 @@ export class HomeComponent {
 
   constructor() {
     this.initAppLanguage();
-    this.initAppTheme();
+  }
+
+  public iconFolder(): string {
+    return this.themeService.iconFolder();
   }
 
   async initAppLanguage(): Promise<void> {
@@ -42,11 +46,5 @@ export class HomeComponent {
     const predefinedLang = (typeof stored === 'string' ? stored : null) ?? Language.EN;
     this.translate.use(predefinedLang);
     console.info('App language is', predefinedLang);
-  }
-
-  async initAppTheme(): Promise<void> {
-    const stored = await this.storage.get(STORAGE_CONSTANTS.LOCAL_THEME_KEY);
-    const predefinedTheme = (typeof stored === 'string' ? stored : null) ?? Theme.LIGHT;
-    console.info('App theme is', predefinedTheme);
   }
 }

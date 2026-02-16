@@ -4,7 +4,7 @@
 <div class="accordion-wrapper">
   @for (item of items(); track item.title) {
     <accordion-item
-      [imageUrl]="item.imageUrl"
+      [imageUrl]="themeService.getThemedIconPath(item.imageUrl)"
       [title]="item.title"
       [description]="item.description"
     >

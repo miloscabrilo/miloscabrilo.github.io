@@ -3,7 +3,13 @@
     {{ "FEEDBACKS.TITLE" | translate }}
   </h4>
 }
-<swiper-container class="content-wrapper" pagination="true" [loop]="true">
+<swiper-container
+  class="content-wrapper"
+  [spaceBetween]="8"
+  pagination="true"
+  [loop]="true"
+  [class]="getTheme()"
+>
   @for (feedback of feedbacks(); track feedback.name) {
     <swiper-slide class="content">
       <div class="title">

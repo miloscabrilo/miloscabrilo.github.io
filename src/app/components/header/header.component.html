@@ -2,14 +2,14 @@
   <div class="header-left">
     <img
       class="header-logo"
-      src="assets/icons/demetra-blue-logo-64x64.svg"
+      [src]="'assets/icons/' + themeService.iconFolder() + '/demetra-logo-64x64.svg'"
       alt="logo"
     />
     <h1 class="style-h1">{{ "SITE.TITLE" | translate }}</h1>
   </div>
   <img
     class="header-dots"
-    src="assets/icons/dots-36x36.svg"
+    [src]="'assets/icons/' + themeService.iconFolder() + '/dots-36x36.svg'"
     alt="dots"
     (click)="togglePopover()"
     #triggerButton
@@ -35,6 +35,6 @@
 ></language-modal>
 <theme-modal
   [isVisible]="showThemeModal()"
-  [selectedTheme]="selectedTheme()"
+  [selectedTheme]="themeService.currentTheme()"
   (close)="onThemeModalClosed()"
 ></theme-modal>

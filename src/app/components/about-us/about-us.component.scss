@@ -71,6 +71,10 @@
   border-radius: 16px;
   border: 1px solid var(--demetra-blue);
   box-sizing: border-box;
+
+  &.dark {
+    filter: invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%);
+  }
 }
 
 a {

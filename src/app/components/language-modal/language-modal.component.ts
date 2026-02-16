@@ -4,6 +4,7 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { StorageService } from '../../core/services/storage.service';
 import { STORAGE_CONSTANTS } from '../../core/constants/storage.constants';
 import { LANGUAGE_LIST } from '../../core/constants/language-list.constants';
+import { ThemeService } from '../../core/services/theme.service';
 
 @Component({
   selector: 'language-modal',
@@ -15,7 +16,7 @@ import { LANGUAGE_LIST } from '../../core/constants/language-list.constants';
 export class LanguageModalComponent {
   private readonly translate = inject(TranslateService);
   private readonly storage = inject(StorageService);
-
+  readonly themeService = inject(ThemeService);
   readonly isVisible = input<boolean>(false);
   readonly selectedLanguage = input<Language>(Language.EN);
   readonly close = output<void>();

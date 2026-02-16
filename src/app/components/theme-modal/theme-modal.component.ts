@@ -2,8 +2,7 @@ import { Component, inject, input, output } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 import { Theme } from '../../core/enums/theme.enum';
 import { THEME_LIST } from '../../core/constants/theme-list.constants';
-import { STORAGE_CONSTANTS } from '../../core/constants/storage.constants';
-import { StorageService } from '../../core/services/storage.service';
+import { ThemeService } from '../../core/services/theme.service';
 
 @Component({
   selector: 'theme-modal',
@@ -12,7 +11,7 @@ import { StorageService } from '../../core/services/storage.service';
   styleUrl: './theme-modal.component.scss',
 })
 export class ThemeModalComponent {
-  private readonly storage = inject(StorageService);
+  readonly themeService = inject(ThemeService);
 
   readonly isVisible = input<boolean>(false);
   readonly selectedTheme = input<Theme>(Theme.LIGHT);
@@ -21,7 +20,7 @@ export class ThemeModalComponent {
 
   async selectTheme(theme: Theme): Promise<void> {
     console.info('App theme is', theme);
-    await this.storage.set(STORAGE_CONSTANTS.LOCAL_THEME_KEY, theme);
+    await this.themeService.setTheme(theme);
     this.close.emit();
   }
 
@@ -32,10 +31,10 @@ export class ThemeModalComponent {
   getThemeIcon(theme: Theme): string {
     switch (theme) {
       case Theme.DARK:
-        return 'assets/icons/dark-mode-24x24.svg';
+        return 'assets/icons/' + this.themeService.iconFolder() + '/dark-mode-24x24.svg';
       case Theme.LIGHT:
       default:
-        return 'assets/icons/light-mode-24x24.svg';
+        return 'assets/icons/light/light-mode-24x24.svg';
     }
   }
 
