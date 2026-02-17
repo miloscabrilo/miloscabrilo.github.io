@@ -48,5 +48,8 @@
   "CONTACT.SEND": "Отправить сообщение",
   "CONTACT.REQUIRED": "Это поле обязательно",
   "CONTACT.INVALID_EMAIL": "Введите корректный email",
+  "CONTACT.CAPTCHA": "Решите:",
+  "CONTACT.CAPTCHA_PLACEHOLDER": "Ваш ответ",
+  "CONTACT.CAPTCHA_WRONG": "Неверный ответ, попробуйте снова",
   "CONTACT.BUTTON": "Свяжитесь с нами"
 }

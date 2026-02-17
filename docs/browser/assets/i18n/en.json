@@ -48,5 +48,8 @@
     "CONTACT.SEND": "Send message",
     "CONTACT.REQUIRED": "This field is required",
     "CONTACT.INVALID_EMAIL": "Please enter a valid email",
+    "CONTACT.CAPTCHA": "Solve:",
+    "CONTACT.CAPTCHA_PLACEHOLDER": "Your answer",
+    "CONTACT.CAPTCHA_WRONG": "Wrong answer, try again",
     "CONTACT.BUTTON": "Contact us"
 }

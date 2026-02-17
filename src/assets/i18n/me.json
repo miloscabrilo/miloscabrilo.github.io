@@ -48,5 +48,8 @@
   "CONTACT.SEND": "Pošalji poruku",
   "CONTACT.REQUIRED": "Ovo polje je obavezno",
   "CONTACT.INVALID_EMAIL": "Unesite ispravnu email adresu",
+  "CONTACT.CAPTCHA": "Riješite:",
+  "CONTACT.CAPTCHA_PLACEHOLDER": "Vaš odgovor",
+  "CONTACT.CAPTCHA_WRONG": "Pogrešan odgovor, pokušajte ponovo",
   "CONTACT.BUTTON": "Kontaktirajte nas"
 }

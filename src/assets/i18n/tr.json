@@ -48,5 +48,8 @@
   "CONTACT.SEND": "Mesaj gönder",
   "CONTACT.REQUIRED": "Bu alan zorunludur",
   "CONTACT.INVALID_EMAIL": "Geçerli bir e-posta adresi girin",
+  "CONTACT.CAPTCHA": "Çözün:",
+  "CONTACT.CAPTCHA_PLACEHOLDER": "Cevabınız",
+  "CONTACT.CAPTCHA_WRONG": "Yanlış cevap, tekrar deneyin",
   "CONTACT.BUTTON": "Bize ulaşın"
 }

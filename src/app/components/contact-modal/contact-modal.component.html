@@ -65,6 +65,25 @@
             </span>
           </div>
 
+          <div class="form-field captcha-field">
+            <label class="style-h6" for="captcha">
+              {{ "CONTACT.CAPTCHA" | translate }} {{ captchaA() }} + {{ captchaB() }} = ?
+            </label>
+            <input
+              id="captcha"
+              type="number"
+              formControlName="captcha"
+              [placeholder]="'CONTACT.CAPTCHA_PLACEHOLDER' | translate"
+            />
+            <span class="error" [class.visible]="contactForm.get('captcha')?.touched && contactForm.get('captcha')?.invalid">
+              @if (contactForm.get('captcha')?.hasError('required')) {
+                {{ "CONTACT.REQUIRED" | translate }}
+              } @else {
+                {{ "CONTACT.CAPTCHA_WRONG" | translate }}
+              }
+            </span>
+          </div>
+
           <button
             type="submit"
             class="submit-btn style-h6"
