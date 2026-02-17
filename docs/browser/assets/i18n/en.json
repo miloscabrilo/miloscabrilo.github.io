@@ -35,5 +35,18 @@
     "POPOVER.THEME": "Theme",
     "THEME.TITLE": "Select theme",
     "THEME.DARK": "Dark",
-    "THEME.LIGHT": "Light"
+    "THEME.LIGHT": "Light",
+    "CONTACT.TITLE": "Contact us",
+    "CONTACT.NAME": "Name",
+    "CONTACT.NAME_PLACEHOLDER": "Enter your name",
+    "CONTACT.EMAIL": "Email",
+    "CONTACT.EMAIL_PLACEHOLDER": "Enter your email",
+    "CONTACT.PHONE": "Phone number",
+    "CONTACT.PHONE_PLACEHOLDER": "Enter your phone number",
+    "CONTACT.MESSAGE": "Message",
+    "CONTACT.MESSAGE_PLACEHOLDER": "Enter your message",
+    "CONTACT.SEND": "Send message",
+    "CONTACT.REQUIRED": "This field is required",
+    "CONTACT.INVALID_EMAIL": "Please enter a valid email",
+    "CONTACT.BUTTON": "Contact us"
 }

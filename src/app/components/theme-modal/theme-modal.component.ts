@@ -47,4 +47,14 @@ export class ThemeModalComponent {
         return 'THEME.LIGHT';
     }
   }
+
+  getCloseIcon(): string {
+    switch (this.themeService.currentTheme()) {
+      case Theme.DARK:
+        return 'assets/icons/dark/close-24x24.svg';
+      case Theme.LIGHT:
+      default:
+        return 'assets/icons/light/close-24x24.svg';
+    }
+  }
 }

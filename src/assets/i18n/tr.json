@@ -35,5 +35,18 @@
   "POPOVER.THEME": "Tema",
   "THEME.TITLE": "Tema seçin",
   "THEME.DARK": "Karanlık",
-  "THEME.LIGHT": "Işık"
+  "THEME.LIGHT": "Işık",
+  "CONTACT.TITLE": "Bize ulaşın",
+  "CONTACT.NAME": "Ad",
+  "CONTACT.NAME_PLACEHOLDER": "Adınızı girin",
+  "CONTACT.EMAIL": "E-posta",
+  "CONTACT.EMAIL_PLACEHOLDER": "E-posta adresinizi girin",
+  "CONTACT.PHONE": "Telefon numarası",
+  "CONTACT.PHONE_PLACEHOLDER": "Telefon numaranızı girin",
+  "CONTACT.MESSAGE": "Mesaj",
+  "CONTACT.MESSAGE_PLACEHOLDER": "Mesajınızı girin",
+  "CONTACT.SEND": "Mesaj gönder",
+  "CONTACT.REQUIRED": "Bu alan zorunludur",
+  "CONTACT.INVALID_EMAIL": "Geçerli bir e-posta adresi girin",
+  "CONTACT.BUTTON": "Bize ulaşın"
 }

@@ -35,5 +35,18 @@
   "POPOVER.THEME": "Тема",
   "THEME.TITLE": "Выберите theme",
   "THEME.DARK": "Темный",
-  "THEME.LIGHT": "Светлый"
+  "THEME.LIGHT": "Светлый",
+  "CONTACT.TITLE": "Свяжитесь с нами",
+  "CONTACT.NAME": "Имя",
+  "CONTACT.NAME_PLACEHOLDER": "Введите ваше имя",
+  "CONTACT.EMAIL": "Электронная почта",
+  "CONTACT.EMAIL_PLACEHOLDER": "Введите ваш email",
+  "CONTACT.PHONE": "Номер телефона",
+  "CONTACT.PHONE_PLACEHOLDER": "Введите номер телефона",
+  "CONTACT.MESSAGE": "Сообщение",
+  "CONTACT.MESSAGE_PLACEHOLDER": "Введите ваше сообщение",
+  "CONTACT.SEND": "Отправить сообщение",
+  "CONTACT.REQUIRED": "Это поле обязательно",
+  "CONTACT.INVALID_EMAIL": "Введите корректный email",
+  "CONTACT.BUTTON": "Свяжитесь с нами"
 }

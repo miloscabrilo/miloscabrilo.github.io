@@ -1,0 +1,79 @@
+@if (isVisible()) {
+  <div class="modal-backdrop" (click)="closeModal()">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <img [src]="themeService.getThemedIconPath('email-36x36.svg')" alt="contact" />
+        <h5 class="style-h5 title">{{ "CONTACT.TITLE" | translate }}</h5>
+        <img [src]="getCloseIcon()" alt="close" (click)="closeModal()" />
+      </div>
+
+      <div class="modal-content">
+        <form class="contact-form" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+          <div class="form-field">
+            <label class="style-h6" for="name">{{ "CONTACT.NAME" | translate }}</label>
+            <input
+              id="name"
+              type="text"
+              formControlName="name"
+              [placeholder]="'CONTACT.NAME_PLACEHOLDER' | translate"
+            />
+            <span class="error" [class.visible]="contactForm.get('name')?.touched && contactForm.get('name')?.hasError('required')">
+              {{ "CONTACT.REQUIRED" | translate }}
+            </span>
+          </div>
+
+          <div class="form-field">
+            <label class="style-h6" for="email">{{ "CONTACT.EMAIL" | translate }}</label>
+            <input
+              id="email"
+              type="email"
+              formControlName="email"
+              [placeholder]="'CONTACT.EMAIL_PLACEHOLDER' | translate"
+            />
+            <span class="error" [class.visible]="contactForm.get('email')?.touched && contactForm.get('email')?.invalid">
+              @if (contactForm.get('email')?.hasError('required')) {
+                {{ "CONTACT.REQUIRED" | translate }}
+              } @else {
+                {{ "CONTACT.INVALID_EMAIL" | translate }}
+              }
+            </span>
+          </div>
+
+          <div class="form-field">
+            <label class="style-h6" for="phone">{{ "CONTACT.PHONE" | translate }}</label>
+            <input
+              id="phone"
+              type="tel"
+              formControlName="phone"
+              [placeholder]="'CONTACT.PHONE_PLACEHOLDER' | translate"
+            />
+            <span class="error" [class.visible]="contactForm.get('phone')?.touched && contactForm.get('phone')?.hasError('required')">
+              {{ "CONTACT.REQUIRED" | translate }}
+            </span>
+          </div>
+
+          <div class="form-field">
+            <label class="style-h6" for="message">{{ "CONTACT.MESSAGE" | translate }}</label>
+            <textarea
+              id="message"
+              formControlName="message"
+              [placeholder]="'CONTACT.MESSAGE_PLACEHOLDER' | translate"
+              rows="4"
+            ></textarea>
+            <span class="error" [class.visible]="contactForm.get('message')?.touched && contactForm.get('message')?.hasError('required')">
+              {{ "CONTACT.REQUIRED" | translate }}
+            </span>
+          </div>
+
+          <button
+            type="submit"
+            class="submit-btn style-h6"
+            [disabled]="contactForm.invalid"
+          >
+            {{ "CONTACT.SEND" | translate }}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+}

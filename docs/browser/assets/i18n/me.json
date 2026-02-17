@@ -35,5 +35,18 @@
   "POPOVER.THEME": "Tema",
   "THEME.TITLE": "Odaberite temu",
   "THEME.DARK": "Tamna",
-  "THEME.LIGHT": "Svetla"
+  "THEME.LIGHT": "Svetla",
+  "CONTACT.TITLE": "Kontaktirajte nas",
+  "CONTACT.NAME": "Ime",
+  "CONTACT.NAME_PLACEHOLDER": "Unesite vaše ime",
+  "CONTACT.EMAIL": "Email",
+  "CONTACT.EMAIL_PLACEHOLDER": "Unesite vaš email",
+  "CONTACT.PHONE": "Broj telefona",
+  "CONTACT.PHONE_PLACEHOLDER": "Unesite broj telefona",
+  "CONTACT.MESSAGE": "Poruka",
+  "CONTACT.MESSAGE_PLACEHOLDER": "Unesite vašu poruku",
+  "CONTACT.SEND": "Pošalji poruku",
+  "CONTACT.REQUIRED": "Ovo polje je obavezno",
+  "CONTACT.INVALID_EMAIL": "Unesite ispravnu email adresu",
+  "CONTACT.BUTTON": "Kontaktirajte nas"
 }

@@ -17,6 +17,11 @@
 </div>
 
 <div class="popover" #popover [class.show]="isPopoverOpen()">
+  <div class="popover-row" (click)="openContactModal()">
+    <h6 class="style-h6">{{ "CONTACT.BUTTON" | translate }}</h6>
+    <img [src]="getContactIcon()" alt="contact" />
+  </div>
+  <div class="divider"></div>
   <div class="popover-row" (click)="openLanguageModal()">
     <h6 class="style-h6">{{ "POPOVER.LANGUAGE" | translate }}</h6>
     <img [src]="getSelectedLanguageIcon()" alt="lang" />
@@ -38,3 +43,7 @@
   [selectedTheme]="themeService.currentTheme()"
   (close)="onThemeModalClosed()"
 ></theme-modal>
+<contact-modal
+  [isVisible]="showContactModal()"
+  (close)="onContactModalClosed()"
+></contact-modal>

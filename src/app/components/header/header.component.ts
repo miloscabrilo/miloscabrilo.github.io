@@ -1,4 +1,10 @@
-import { Component, ElementRef, inject, signal, viewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  inject,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 import { LanguageModalComponent } from '../language-modal/language-modal.component';
 import { StorageService } from '../../core/services/storage.service';
@@ -6,11 +12,17 @@ import { STORAGE_CONSTANTS } from '../../core/constants/storage.constants';
 import { Language } from '../../core/enums/language.enum';
 import { Theme } from '../../core/enums/theme.enum';
 import { ThemeModalComponent } from '../theme-modal/theme-modal.component';
+import { ContactModalComponent } from '../contact-modal/contact-modal.component';
 import { ThemeService } from '../../core/services/theme.service';
 
 @Component({
   selector: 'demetra-header',
-  imports: [TranslatePipe, LanguageModalComponent, ThemeModalComponent],
+  imports: [
+    TranslatePipe,
+    LanguageModalComponent,
+    ThemeModalComponent,
+    ContactModalComponent,
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
   standalone: true,
@@ -28,6 +40,7 @@ export class HeaderComponent {
   readonly isPopoverOpen = signal(false);
   readonly showLangModal = signal(false);
   readonly showThemeModal = signal(false);
+  readonly showContactModal = signal(false);
   readonly selectedLanguage = signal<Language>(Language.EN);
 
   constructor() {
@@ -46,7 +59,7 @@ export class HeaderComponent {
   }
 
   togglePopover() {
-    this.isPopoverOpen.update(v => !v);
+    this.isPopoverOpen.update((v) => !v);
   }
 
   getSelectedLanguageIcon(): string {
@@ -62,6 +75,16 @@ export class HeaderComponent {
       case Language.EN:
       default:
         return 'assets/icons/en-24x24.svg';
+    }
+  }
+
+  getContactIcon(): string {
+    switch (this.themeService.currentTheme()) {
+      case Theme.DARK:
+        return 'assets/icons/dark/contact-24x24.svg';
+      case Theme.LIGHT:
+      default:
+        return 'assets/icons/light/contact-24x24.svg';
     }
   }
 
@@ -96,9 +119,18 @@ export class HeaderComponent {
     this.showThemeModal.set(false);
   }
 
+  openContactModal(): void {
+    this.showContactModal.set(true);
+    this.togglePopover();
+  }
+
+  onContactModalClosed(): void {
+    this.showContactModal.set(false);
+  }
+
   private async loadStoredLanguage(): Promise<void> {
     const storedLanguage = await this.storage.get(
-      STORAGE_CONSTANTS.LOCAL_LANGUAGE_KEY
+      STORAGE_CONSTANTS.LOCAL_LANGUAGE_KEY,
     );
     this.selectedLanguage.set((storedLanguage as Language) || Language.EN);
     console.info('App language is', this.selectedLanguage());

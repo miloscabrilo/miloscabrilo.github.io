@@ -5,6 +5,7 @@ import { StorageService } from '../../core/services/storage.service';
 import { STORAGE_CONSTANTS } from '../../core/constants/storage.constants';
 import { LANGUAGE_LIST } from '../../core/constants/language-list.constants';
 import { ThemeService } from '../../core/services/theme.service';
+import { Theme } from '../../core/enums/theme.enum';
 
 @Component({
   selector: 'language-modal',
@@ -46,6 +47,16 @@ export class LanguageModalComponent {
       case Language.EN:
       default:
         return 'assets/icons/en-24x24.svg';
+    }
+  }
+
+  getCloseIcon(): string {
+    switch (this.themeService.currentTheme()) {
+      case Theme.DARK:
+        return 'assets/icons/dark/close-24x24.svg';
+      case Theme.LIGHT:
+      default:
+        return 'assets/icons/light/close-24x24.svg';
     }
   }
 
