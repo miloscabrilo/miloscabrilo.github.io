@@ -1,4 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { STORAGE_CONSTANTS } from './core/constants/storage.constants';
 import { Language } from './core/enums/language.enum';
@@ -36,6 +37,7 @@ export class HomeComponent {
   readonly items1 = ACCORDION_SERVICES;
   readonly items2 = ACCORDION_ASSISTANCE;
   readonly feedbacks = FEEDBACK_LIST;
+  readonly ready = signal(false);
 
   constructor() {
     this.initAppLanguage();
@@ -49,7 +51,8 @@ export class HomeComponent {
     const stored = await this.storage.get(STORAGE_CONSTANTS.LOCAL_LANGUAGE_KEY);
     const predefinedLang =
       (typeof stored === 'string' ? stored : null) ?? Language.EN;
-    this.translate.use(predefinedLang);
+    await firstValueFrom(this.translate.use(predefinedLang));
     console.info('App language is', predefinedLang);
+    this.ready.set(true);
   }
 }

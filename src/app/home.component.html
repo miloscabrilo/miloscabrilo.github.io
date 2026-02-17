@@ -1,11 +1,93 @@
-<demetra-header />
-<div class="content-wrapper">
-  <demetra-intro />
+@if (ready()) {
+  <demetra-header />
+  <div class="content-wrapper">
+    <demetra-intro />
 
-  <accordion-section [title]="'SECTION1.TITLE'" [items]="items1" />
-  <accordion-section [title]="'SECTION2.TITLE'" [items]="items2" />
+    <accordion-section [title]="'SECTION1.TITLE'" [items]="items1" />
+    <accordion-section [title]="'SECTION2.TITLE'" [items]="items2" />
 
-  <about-us />
+    <about-us />
 
-  <clients-feedbacks [feedbacks]="feedbacks" />
-</div>
+    <clients-feedbacks [feedbacks]="feedbacks" />
+  </div>
+} @else {
+  <!-- Skeleton loader -->
+  <div class="skeleton-header">
+    <div class="skeleton-header-left">
+      <div class="skeleton-bone skeleton-logo"></div>
+      <div class="skeleton-bone skeleton-title"></div>
+    </div>
+    <div class="skeleton-bone skeleton-dots"></div>
+  </div>
+
+  <div class="skeleton-wrapper">
+    <!-- Intro skeleton -->
+    <div class="skeleton-intro">
+      <div class="skeleton-bone skeleton-cover"></div>
+      <div class="skeleton-intro-text">
+        <div class="skeleton-bone skeleton-line full"></div>
+        <div class="skeleton-bone skeleton-line full"></div>
+        <div class="skeleton-bone skeleton-line w75"></div>
+      </div>
+    </div>
+
+    <!-- Accordion section 1 skeleton -->
+    <div class="skeleton-section">
+      <div class="skeleton-bone skeleton-section-title"></div>
+      <div class="skeleton-card">
+        @for (i of [1, 2, 3]; track i) {
+          <div class="skeleton-accordion-item">
+            <div class="skeleton-bone skeleton-icon"></div>
+            <div class="skeleton-bone skeleton-line flex-1"></div>
+            <div class="skeleton-bone skeleton-chevron"></div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Accordion section 2 skeleton -->
+    <div class="skeleton-section">
+      <div class="skeleton-bone skeleton-section-title"></div>
+      <div class="skeleton-card">
+        @for (i of [1, 2]; track i) {
+          <div class="skeleton-accordion-item">
+            <div class="skeleton-bone skeleton-icon"></div>
+            <div class="skeleton-bone skeleton-line flex-1"></div>
+            <div class="skeleton-bone skeleton-chevron"></div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- About us skeleton -->
+    <div class="skeleton-section">
+      <div class="skeleton-bone skeleton-section-title"></div>
+      <div class="skeleton-about">
+        <div class="skeleton-card skeleton-about-items">
+          @for (i of [1, 2, 3, 4]; track i) {
+            <div class="skeleton-accordion-item">
+              <div class="skeleton-bone skeleton-icon"></div>
+              <div class="skeleton-bone skeleton-line flex-1"></div>
+              <div class="skeleton-bone skeleton-chevron"></div>
+            </div>
+          }
+        </div>
+        <div class="skeleton-bone skeleton-map"></div>
+      </div>
+    </div>
+
+    <!-- Feedbacks skeleton -->
+    <div class="skeleton-section">
+      <div class="skeleton-bone skeleton-section-title"></div>
+      <div class="skeleton-card skeleton-feedback">
+        <div class="skeleton-feedback-header">
+          <div class="skeleton-bone skeleton-avatar"></div>
+          <div class="skeleton-bone skeleton-line w50"></div>
+        </div>
+        <div class="skeleton-bone skeleton-line full"></div>
+        <div class="skeleton-bone skeleton-line full"></div>
+        <div class="skeleton-bone skeleton-line w75"></div>
+      </div>
+    </div>
+  </div>
+}
