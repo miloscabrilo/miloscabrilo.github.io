@@ -1,13 +1,6 @@
 <demetra-header />
 <div class="content-wrapper">
-  <div class="site-intro" [class]="themeService.iconFolder()">
-    <img
-      class="cover-image"
-      [src]="'assets/images/' + iconFolder() + '/demetra-cover.svg'"
-      alt="D"
-    />
-    <p class="style-p description">{{ "SITE.DESCRIPTION" | translate }}</p>
-  </div>
+  <demetra-intro />
 
   <accordion-section [title]="'SECTION1.TITLE'" [items]="items1" />
   <accordion-section [title]="'SECTION2.TITLE'" [items]="items2" />
@@ -16,34 +9,3 @@
 
   <clients-feedbacks [feedbacks]="feedbacks" />
 </div>
-<!-- 
-<div>{{ "HELLO" | translate }}</div>
-<div>{{ "MAIN.TITLE" | translate }}</div>
-<change-language></change-language> -->
-
-<!-- From Uiverse.io by JkHuger --><!-- 
-<label for="theme" class="theme">
-  <span class="theme__toggle-wrap">
-    <input
-      id="theme"
-      class="theme__toggle"
-      type="checkbox"
-      role="switch"
-      name="theme"
-      value="dark"
-    />
-    <span class="theme__fill"></span>
-    <span class="theme__icon">
-      <span class="theme__icon-part"></span>
-      <span class="theme__icon-part"></span>
-      <span class="theme__icon-part"></span>
-      <span class="theme__icon-part"></span>
-      <span class="theme__icon-part"></span>
-      <span class="theme__icon-part"></span>
-      <span class="theme__icon-part"></span>
-      <span class="theme__icon-part"></span>
-      <span class="theme__icon-part"></span>
-    </span>
-  </span>
-</label>
- -->

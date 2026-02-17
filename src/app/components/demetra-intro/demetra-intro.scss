@@ -1,0 +1,20 @@
+.cover-image {
+  background-size: cover;
+  width: 100%;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.site-intro {
+  border-radius: 16px;
+  border: 1px solid var(--demetra-blue);
+  background-color: var(--demetra-gold);
+  &.dark {
+    background-color: var(--demetra-black);
+    border: 1px solid var(--demetra-gold);
+  }
+}
+
+.description {
+  padding: 8px 16px 16px;
+}

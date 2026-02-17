@@ -74,6 +74,7 @@
 
   &.dark {
     filter: invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%);
+    border: 1px solid var(--demetra-gold);
   }
 }
 
