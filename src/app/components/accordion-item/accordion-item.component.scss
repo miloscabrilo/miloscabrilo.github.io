@@ -16,8 +16,11 @@
   }
 
   .divider {
-    border-bottom: 0.5px solid var(--demetra-gold);
+    border-bottom: 0.5px solid var(--demetra-blue);
     margin: 0 32px 0 44px;
+    &.dark {
+      border-bottom: 0.5px solid var(--demetra-gold);
+    }
   }
 
   .description {

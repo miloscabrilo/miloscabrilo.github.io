@@ -3,12 +3,12 @@
   <div class="title-line" (click)="toggle()">
     <img [src]="imageUrl()" alt="icon" />
     <h5 class="style-h5 title">{{ title() | translate }}</h5>
-    <img [class.rotate-img]="isExpanded()" src="assets/icons/arrow-down-24x24.svg" alt="arrow" />
+    <img [class.rotate-img]="isExpanded()" [src]="getArrowIcon()" alt="arrow" />
   </div>
 
   @if (isExpanded()) {
     <!-- Divider -->
-    <div class="divider"></div>
+    <div class="divider" [class.dark]="isDarkTheme()"></div>
 
     <!-- Description -->
     <div class="description">
