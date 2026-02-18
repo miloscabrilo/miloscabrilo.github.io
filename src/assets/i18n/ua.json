@@ -51,5 +51,8 @@
   "CONTACT.CAPTCHA": "Розв'яжіть:",
   "CONTACT.CAPTCHA_PLACEHOLDER": "Ваша відповідь",
   "CONTACT.CAPTCHA_WRONG": "Неправильна відповідь, спробуйте ще раз",
+  "CONTACT.SENDING": "Надсилання...",
+  "CONTACT.SUCCESS": "Повідомлення успішно надіслано!",
+  "CONTACT.ERROR": "Не вдалося надіслати повідомлення. Спробуйте ще раз.",
   "CONTACT.BUTTON": "Зв'яжіться з нами"
 }

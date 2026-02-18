@@ -51,5 +51,8 @@
     "CONTACT.CAPTCHA": "Solve:",
     "CONTACT.CAPTCHA_PLACEHOLDER": "Your answer",
     "CONTACT.CAPTCHA_WRONG": "Wrong answer, try again",
+    "CONTACT.SENDING": "Sending...",
+    "CONTACT.SUCCESS": "Message sent successfully!",
+    "CONTACT.ERROR": "Failed to send message. Please try again.",
     "CONTACT.BUTTON": "Contact us"
 }

@@ -51,5 +51,8 @@
   "CONTACT.CAPTCHA": "Çözün:",
   "CONTACT.CAPTCHA_PLACEHOLDER": "Cevabınız",
   "CONTACT.CAPTCHA_WRONG": "Yanlış cevap, tekrar deneyin",
+  "CONTACT.SENDING": "Gönderiliyor...",
+  "CONTACT.SUCCESS": "Mesaj başarıyla gönderildi!",
+  "CONTACT.ERROR": "Mesaj gönderilemedi. Lütfen tekrar deneyin.",
   "CONTACT.BUTTON": "Bize ulaşın"
 }

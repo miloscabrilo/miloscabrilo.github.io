@@ -2,7 +2,10 @@ import { Component, effect, inject, input, output, signal } from '@angular/core'
 import { AbstractControl, FormBuilder, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { TranslatePipe } from '@ngx-translate/core';
 import { ThemeService } from '../../core/services/theme.service';
+import { ContactService } from '../../core/services/contact.service';
 import { Theme } from '../../core/enums/theme.enum';
+
+type SubmitStatus = 'idle' | 'sending' | 'success' | 'error';
 
 @Component({
   selector: 'contact-modal',
@@ -13,6 +16,7 @@ import { Theme } from '../../core/enums/theme.enum';
 })
 export class ContactModalComponent {
   private readonly fb = inject(FormBuilder);
+  private readonly contactService = inject(ContactService);
   readonly themeService = inject(ThemeService);
 
   readonly isVisible = input<boolean>(false);
@@ -20,6 +24,7 @@ export class ContactModalComponent {
 
   readonly captchaA = signal(0);
   readonly captchaB = signal(0);
+  readonly submitStatus = signal<SubmitStatus>('idle');
 
   readonly contactForm = this.fb.group({
     name: ['', Validators.required],
@@ -36,23 +41,41 @@ export class ContactModalComponent {
     effect(() => {
       if (this.isVisible()) {
         this.generateCaptcha();
+        this.submitStatus.set('idle');
       }
     });
   }
 
   closeModal(): void {
     this.contactForm.reset();
+    this.submitStatus.set('idle');
     this.close.emit();
   }
 
   onSubmit(): void {
-    if (this.contactForm.valid) {
-      console.info('Contact form submitted:', this.contactForm.value);
-      this.contactForm.reset();
-      this.close.emit();
-    } else {
+    if (this.contactForm.invalid) {
       this.contactForm.markAllAsTouched();
+      return;
     }
+
+    const { name, email, phone, message } = this.contactForm.value;
+    this.submitStatus.set('sending');
+
+    this.contactService.sendMessage({
+      name: name!,
+      email: email!,
+      phone: phone!,
+      message: message!,
+    }).subscribe({
+      next: () => {
+        this.submitStatus.set('success');
+        this.contactForm.reset();
+      },
+      error: (err) => {
+        console.error('Failed to send message:', err);
+        this.submitStatus.set('error');
+      },
+    });
   }
 
   getCloseIcon(): string {

@@ -51,5 +51,8 @@
   "CONTACT.CAPTCHA": "Riješite:",
   "CONTACT.CAPTCHA_PLACEHOLDER": "Vaš odgovor",
   "CONTACT.CAPTCHA_WRONG": "Pogrešan odgovor, pokušajte ponovo",
+  "CONTACT.SENDING": "Slanje...",
+  "CONTACT.SUCCESS": "Poruka je uspješno poslata!",
+  "CONTACT.ERROR": "Slanje poruke nije uspjelo. Pokušajte ponovo.",
   "CONTACT.BUTTON": "Kontaktirajte nas"
 }

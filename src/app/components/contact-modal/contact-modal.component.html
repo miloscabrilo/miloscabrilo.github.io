@@ -84,12 +84,26 @@
             </span>
           </div>
 
+          @if (submitStatus() === 'success') {
+            <div class="status-message success">
+              <span class="style-h6">{{ "CONTACT.SUCCESS" | translate }}</span>
+            </div>
+          } @else if (submitStatus() === 'error') {
+            <div class="status-message error-msg">
+              <span class="style-h6">{{ "CONTACT.ERROR" | translate }}</span>
+            </div>
+          }
+
           <button
             type="submit"
             class="submit-btn style-h6"
-            [disabled]="contactForm.invalid"
+            [disabled]="contactForm.invalid || submitStatus() === 'sending' || submitStatus() === 'success'"
           >
-            {{ "CONTACT.SEND" | translate }}
+            @if (submitStatus() === 'sending') {
+              {{ "CONTACT.SENDING" | translate }}
+            } @else {
+              {{ "CONTACT.SEND" | translate }}
+            }
           </button>
         </form>
       </div>

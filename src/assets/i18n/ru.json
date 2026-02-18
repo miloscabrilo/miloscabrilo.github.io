@@ -51,5 +51,8 @@
   "CONTACT.CAPTCHA": "Решите:",
   "CONTACT.CAPTCHA_PLACEHOLDER": "Ваш ответ",
   "CONTACT.CAPTCHA_WRONG": "Неверный ответ, попробуйте снова",
+  "CONTACT.SENDING": "Отправка...",
+  "CONTACT.SUCCESS": "Сообщение успешно отправлено!",
+  "CONTACT.ERROR": "Не удалось отправить сообщение. Попробуйте снова.",
   "CONTACT.BUTTON": "Свяжитесь с нами"
 }
