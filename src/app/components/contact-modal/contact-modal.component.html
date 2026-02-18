@@ -97,6 +97,7 @@
           <button
             type="submit"
             class="submit-btn style-h6"
+            [class.dark]="isDarkTheme()"
             [disabled]="contactForm.invalid || submitStatus() === 'sending' || submitStatus() === 'success'"
           >
             @if (submitStatus() === 'sending') {

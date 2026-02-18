@@ -1,4 +1,4 @@
-import { Component, effect, inject, input, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, inject, input, output, signal } from '@angular/core';
 import { AbstractControl, FormBuilder, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { TranslatePipe } from '@ngx-translate/core';
 import { ThemeService } from '../../core/services/theme.service';
@@ -13,6 +13,7 @@ type SubmitStatus = 'idle' | 'sending' | 'success' | 'error';
   templateUrl: './contact-modal.component.html',
   styleUrl: './contact-modal.component.scss',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContactModalComponent {
   private readonly fb = inject(FormBuilder);
@@ -21,6 +22,7 @@ export class ContactModalComponent {
 
   readonly isVisible = input<boolean>(false);
   readonly close = output<void>();
+  readonly isDarkTheme = computed(() => this.themeService.currentTheme() === Theme.DARK);
 
   readonly captchaA = signal(0);
   readonly captchaB = signal(0);
