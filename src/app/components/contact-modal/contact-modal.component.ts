@@ -1,9 +1,27 @@
-import { ChangeDetectionStrategy, Component, computed, effect, inject, input, output, signal } from '@angular/core';
-import { AbstractControl, FormBuilder, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  inject,
+  input,
+  output,
+  signal,
+} from '@angular/core';
+import {
+  AbstractControl,
+  FormBuilder,
+  ReactiveFormsModule,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
 import { TranslatePipe } from '@ngx-translate/core';
 import { ThemeService } from '../../core/services/theme.service';
 import { ContactService } from '../../core/services/contact.service';
 import { Theme } from '../../core/enums/theme.enum';
+import { StorageService } from '../../core/services/storage.service';
+import { STORAGE_CONSTANTS } from '../../core/constants/storage.constants';
+import { Language } from '../../core/enums/language.enum';
 
 type SubmitStatus = 'idle' | 'sending' | 'success' | 'error';
 
@@ -19,10 +37,14 @@ export class ContactModalComponent {
   private readonly fb = inject(FormBuilder);
   private readonly contactService = inject(ContactService);
   readonly themeService = inject(ThemeService);
+  readonly storage = inject(StorageService);
+  readonly language = signal<Language>(Language.EN);
 
   readonly isVisible = input<boolean>(false);
   readonly close = output<void>();
-  readonly isDarkTheme = computed(() => this.themeService.currentTheme() === Theme.DARK);
+  readonly isDarkTheme = computed(
+    () => this.themeService.currentTheme() === Theme.DARK,
+  );
 
   readonly captchaA = signal(0);
   readonly captchaB = signal(0);
@@ -33,19 +55,34 @@ export class ContactModalComponent {
     email: ['', [Validators.required, Validators.email]],
     phone: ['', Validators.required],
     message: ['', Validators.required],
-    captcha: ['', [Validators.required, (c: AbstractControl): ValidationErrors | null =>
-      c.value && Number(c.value) === this.captchaA() + this.captchaB() ? null : { captcha: true }
-    ]],
+    captcha: [
+      '',
+      [
+        Validators.required,
+        (c: AbstractControl): ValidationErrors | null =>
+          c.value && Number(c.value) === this.captchaA() + this.captchaB()
+            ? null
+            : { captcha: true },
+      ],
+    ],
   });
 
   constructor() {
     this.generateCaptcha();
+    this.loadStoredLanguage();
     effect(() => {
       if (this.isVisible()) {
         this.generateCaptcha();
         this.submitStatus.set('idle');
       }
     });
+  }
+
+  private async loadStoredLanguage(): Promise<void> {
+    const storedLanguage = await this.storage.get(
+      STORAGE_CONSTANTS.LOCAL_LANGUAGE_KEY,
+    );
+    this.language.set((storedLanguage as Language) || Language.EN);
   }
 
   closeModal(): void {
@@ -63,21 +100,24 @@ export class ContactModalComponent {
     const { name, email, phone, message } = this.contactForm.value;
     this.submitStatus.set('sending');
 
-    this.contactService.sendMessage({
-      name: name!,
-      email: email!,
-      phone: phone!,
-      message: message!,
-    }).subscribe({
-      next: () => {
-        this.submitStatus.set('success');
-        this.contactForm.reset();
-      },
-      error: (err) => {
-        console.error('Failed to send message:', err);
-        this.submitStatus.set('error');
-      },
-    });
+    this.contactService
+      .sendMessage({
+        name: name!,
+        email: email!,
+        phone: phone!,
+        message: message!,
+        language: this.language(),
+      })
+      .subscribe({
+        next: () => {
+          this.submitStatus.set('success');
+          this.contactForm.reset();
+        },
+        error: (err) => {
+          console.error('Failed to send message:', err);
+          this.submitStatus.set('error');
+        },
+      });
   }
 
   getCloseIcon(): string {
