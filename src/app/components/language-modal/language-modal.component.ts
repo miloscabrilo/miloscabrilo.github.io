@@ -1,4 +1,4 @@
-import { Component, inject, input, output } from '@angular/core';
+import { Component, effect, inject, input, output } from '@angular/core';
 import { Language } from '../../core/enums/language.enum';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { StorageService } from '../../core/services/storage.service';
@@ -22,6 +22,12 @@ export class LanguageModalComponent {
   readonly selectedLanguage = input<Language>(Language.EN);
   readonly close = output<void>();
   readonly languages = LANGUAGE_LIST;
+
+  constructor() {
+    effect(() => {
+      document.body.style.overflow = this.isVisible() ? 'hidden' : '';
+    });
+  }
 
   async selectLanguage(lang: Language): Promise<void> {
     this.translate.use(lang);

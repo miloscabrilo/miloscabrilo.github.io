@@ -1,96 +1,141 @@
 .modal-backdrop {
-    position: fixed; // <- this anchors it to the viewport
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.4); // backdrop effect
-    display: flex;
-    justify-content: center;
-    align-items: flex-end; // or 'center' if you want it centered
-    z-index: 1000; // ensure it's above other content
-    touch-action: none; // prevent interaction with the backdrop
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 1000;
+  touch-action: none;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal {
+  background-color: var(--demetra-background);
+  width: 100%;
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+  overflow: hidden;
+  box-shadow: var(--demetra-shadow-lg);
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
   }
-  
-  .modal {
-    background-color: var(--demetra-background);
-    width: 100%;
-    border-top-left-radius: 32px;
-    border-top-right-radius: 32px;
-    overflow: hidden;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
-    animation: slideUp 0.3s ease-out;
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
-  
-  /* Slide animation */
-  @keyframes slideUp {
-    from {
-      transform: translateY(100%);
+}
+
+.modal-header {
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+
+  .title {
+    flex-grow: 1;
+  }
+
+  img[alt="close"] {
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 4px;
+    transition: background-color 0.15s ease;
+
+    &:hover {
+      background-color: var(--demetra-hover-overlay);
     }
-    to {
-      transform: translateY(0);
-    }
   }
-  
-  .modal-header {
-    padding: 16px;
+}
+
+.modal-content {
+  padding: 16px 20px 28px;
+
+  .theme-form {
+    background-color: var(--demetra-white);
+    border-radius: var(--demetra-radius-md);
+    padding: 0 20px;
+    box-shadow: var(--demetra-shadow-sm);
+  }
+
+  .theme-option {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     gap: 12px;
-  
-    .title {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--demetra-divider);
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .theme-text {
       flex-grow: 1;
     }
-  
-    img[alt="close"] {
+
+    input[type="radio"] {
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border: 2px solid var(--demetra-text-color);
+      border-radius: 50%;
+      position: relative;
+      outline: none;
       cursor: pointer;
-    }
-  }
-  
-  .modal-content {
-    padding: 16px;
-    margin-bottom: 32px;
-  
-    .theme-form {
-      background-color: var(--demetra-white);
-      border-radius: 16px;
-      padding: 0 16px;
-    }
-  
-    .theme-option {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 12px 0;
-      border-bottom: 1px solid var(--demetra-background);
-      cursor: pointer;
-  
-      .theme-text {
-        flex-grow: 1;
-      }
-  
-      input[type="radio"] {
-        appearance: none; // remove native style
-        width: 24px; // size
-        height: 24px;
-        border: 2px solid var(--demetra-text-color);
+      transition: all 0.2s ease-in-out;
+
+      &:checked::before {
+        content: "";
+        display: block;
+        width: 12px;
+        height: 12px;
+        background-color: var(--demetra-text-color);
         border-radius: 50%;
-        position: relative;
-        outline: none;
-        cursor: pointer;
-        transition: all 0.2s ease-in-out;
-  
-        &:checked::before {
-          content: "";
-          display: block;
-          width: 16px;
-          height: 16px;
-          background-color: var(--demetra-text-color);
-          border-radius: 50%;
-          position: absolute;
-          top: 2px;
-          left: 2px;
-        }
+        position: absolute;
+        top: 3px;
+        left: 3px;
       }
     }
   }
-  
+}
+
+@media (min-width: 768px) {
+  .modal-backdrop {
+    align-items: center;
+    padding: 24px;
+  }
+
+  .modal {
+    max-width: 480px;
+    border-radius: var(--demetra-radius-lg);
+    animation: scaleIn 0.25s ease-out;
+  }
+
+  .modal-header {
+    padding: 24px 28px 12px;
+  }
+
+  .modal-content {
+    padding: 0 28px 28px;
+  }
+}

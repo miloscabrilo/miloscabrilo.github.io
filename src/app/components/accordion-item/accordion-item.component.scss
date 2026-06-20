@@ -1,29 +1,69 @@
 .accordion-item {
-  padding: 12px 0;
+  padding: 14px 0;
 
   .title-line {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
+    cursor: pointer;
+    border-radius: var(--demetra-radius-sm);
+    transition: background-color 0.15s ease;
+    margin: -8px;
+    padding: 8px;
+
+    &:hover {
+      background-color: var(--demetra-hover-overlay);
+    }
 
     .title {
       flex-grow: 1;
     }
 
     .rotate-img {
-      rotate: 180deg;
+      transform: rotate(180deg);
+      transition: transform 0.25s ease;
+    }
+
+    img:last-child {
+      transition: transform 0.25s ease;
     }
   }
 
   .divider {
-    border-bottom: 0.5px solid var(--demetra-blue);
-    margin: 0 32px 0 44px;
+    border-bottom: 1px solid var(--demetra-divider);
+    margin: 12px 32px 0 52px;
     &.dark {
-      border-bottom: 0.5px solid var(--demetra-gold);
+      border-bottom: 1px solid var(--demetra-divider);
     }
   }
 
   .description {
-    padding: 8px 32px 0 44px;
+    padding: 10px 32px 4px 52px;
+    animation: descIn 0.25s ease-out;
+  }
+}
+
+@keyframes descIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 900px) {
+  .accordion-item {
+    padding: 18px 0;
+
+    .title-line {
+      gap: 16px;
+    }
+
+    .description {
+      padding: 12px 32px 4px 56px;
+    }
   }
 }

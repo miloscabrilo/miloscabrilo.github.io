@@ -1,17 +1,31 @@
+:host {
+  display: block;
+}
+
+h4 {
+  margin-bottom: 12px;
+}
+
 .content {
-  border-radius: 16px;
-  padding: 16px;
+  border-radius: var(--demetra-radius-md);
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
   background-color: var(--demetra-white);
   height: auto;
   box-sizing: border-box;
+  box-shadow: var(--demetra-shadow-sm);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    box-shadow: var(--demetra-shadow-md);
+  }
 
   .title {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 8px;
     min-height: 36px;
   }
 }
@@ -20,6 +34,7 @@
   background-color: var(--demetra-background);
   margin-top: 8px;
   overflow: visible;
+  display: block;
 }
 
 swiper-container::part(bullet-active) {
@@ -28,5 +43,22 @@ swiper-container::part(bullet-active) {
 
 swiper-container::part(pagination) {
   position: static;
-  margin-top: 8px;
+  margin-top: 12px;
+}
+
+@media (min-width: 900px) {
+  h4 {
+    margin-bottom: 16px;
+  }
+
+  .content {
+    border-radius: var(--demetra-radius-lg);
+    padding: 28px;
+    gap: 16px;
+    min-height: 200px;
+  }
+
+  .content-wrapper {
+    margin-top: 12px;
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, inject, input, output } from '@angular/core';
+import { Component, effect, inject, input, output } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 import { Theme } from '../../core/enums/theme.enum';
 import { THEME_LIST } from '../../core/constants/theme-list.constants';
@@ -17,6 +17,12 @@ export class ThemeModalComponent {
   readonly selectedTheme = input<Theme>(Theme.LIGHT);
   readonly close = output<void>();
   readonly themes = THEME_LIST;
+
+  constructor() {
+    effect(() => {
+      document.body.style.overflow = this.isVisible() ? 'hidden' : '';
+    });
+  }
 
   async selectTheme(theme: Theme): Promise<void> {
     console.info('App theme is', theme);

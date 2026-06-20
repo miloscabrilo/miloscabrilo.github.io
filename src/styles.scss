@@ -13,6 +13,20 @@
   --demetra-black: #17192b;
   --demetra-error: #e74c3c;
 
+  /* --- ---------- --- */
+  /* ---  LAYOUT   --- */
+  /* --- ---------- --- */
+  --demetra-content-max-width: 1200px;
+  --demetra-section-gap: 16px;
+  --demetra-radius-sm: 12px;
+  --demetra-radius-md: 16px;
+  --demetra-radius-lg: 24px;
+  --demetra-shadow-sm: 0 1px 2px rgba(23, 25, 43, 0.06);
+  --demetra-shadow-md: 0 4px 16px rgba(23, 25, 43, 0.08);
+  --demetra-shadow-lg: 0 12px 32px rgba(23, 25, 43, 0.14);
+  --demetra-hover-overlay: rgba(42, 47, 79, 0.04);
+  --demetra-divider: rgba(42, 47, 79, 0.08);
+
   --inter-regular-md-base: "Inter-Regular", "Roboto", "Helvetica Neue",
     sans-serif;
   --inter-medium-md-base: "Inter-Medium", "Roboto", "Helvetica Neue", sans-serif;
@@ -24,12 +38,16 @@
     margin: 0;
     background-color: var(--demetra-background);
     transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body.dark {
     --demetra-background: var(--demetra-blue);
     --demetra-text-color: var(--demetra-gold);
     --demetra-white: var(--demetra-black);
+    --demetra-hover-overlay: rgba(197, 173, 127, 0.06);
+    --demetra-divider: rgba(197, 173, 127, 0.14);
   }
 
   /* --- ------- --- */
@@ -48,49 +66,52 @@
   }
 
   .style-h1 {
-    font-size: 32px;
+    font-size: clamp(32px, 2.4vw, 44px);
     font-family: var(--inter-bold-md-base);
+    letter-spacing: -0.5px;
   }
 
   .style-h2 {
-    font-size: 28px;
+    font-size: clamp(28px, 2vw, 36px);
     font-family: var(--inter-bold-md-base);
+    letter-spacing: -0.4px;
   }
 
   .style-h3 {
-    font-size: 24px;
+    font-size: clamp(24px, 1.7vw, 30px);
     font-family: var(--inter-bold-md-base);
+    letter-spacing: -0.3px;
   }
 
   .style-h4 {
-    font-size: 20px;
+    font-size: clamp(20px, 1.3vw, 24px);
     font-family: var(--inter-semibold-md-base);
     letter-spacing: -0.32px;
     font-weight: 600;
   }
 
   .style-h5 {
-    font-size: 18px;
+    font-size: clamp(18px, 1.05vw, 20px);
     font-family: var(--inter-medium-md-base);
     letter-spacing: -0.2px;
     font-weight: 500;
   }
 
   .style-h6 {
-    font-size: 14px;
+    font-size: clamp(14px, 0.9vw, 15px);
     font-family: var(--inter-medium-md-base);
     letter-spacing: -0.16px;
     font-weight: 500;
   }
 
   .style-p {
-    font-size: 15px;
-    line-height: 1.4;
+    font-size: clamp(15px, 0.95vw, 16px);
+    line-height: 1.55;
     font-family: var(--inter-regular-md-base);
     font-weight: 400;
 
     &.x-small {
-      font-size: 12px;
+      font-size: clamp(12px, 0.85vw, 14px);
     }
   }
 

@@ -18,6 +18,11 @@ export class ClientsFeedbacksComponent {
 
   readonly feedbacks = input<Feedback[]>([]);
 
+  readonly swiperBreakpoints = {
+    900: { slidesPerView: 2, spaceBetween: 16 },
+    1200: { slidesPerView: 3, spaceBetween: 20 },
+  };
+
   getFeedbackAvatar(feedbackType: FeedbackType): string {
     switch (feedbackType) {
       case FeedbackType.PERSON:

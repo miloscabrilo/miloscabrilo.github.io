@@ -1,12 +1,14 @@
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
   display: flex;
   justify-content: center;
   align-items: flex-end;
   z-index: 1000;
   touch-action: none;
+  animation: fadeIn 0.2s ease-out;
 }
 
 .modal {
@@ -15,7 +17,7 @@
   max-height: 90vh;
   border-radius: 32px 32px 0 0;
   overflow: hidden;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--demetra-shadow-lg);
   animation: slideUp 0.3s ease-out;
   display: flex;
   flex-direction: column;
@@ -30,8 +32,24 @@
   }
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 .modal-header {
-  padding: 16px;
+  padding: 20px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -43,21 +61,29 @@
 
   img[alt="close"] {
     cursor: pointer;
+    border-radius: 50%;
+    padding: 4px;
+    transition: background-color 0.15s ease;
+
+    &:hover {
+      background-color: var(--demetra-hover-overlay);
+    }
   }
 }
 
 .modal-content {
-  padding: 0 16px 32px;
+  padding: 0 20px 24px;
   overflow-y: auto;
   flex: 1;
 
   .contact-form {
     background-color: var(--demetra-white);
-    border-radius: 16px;
-    padding: 16px;
+    border-radius: var(--demetra-radius-md);
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
+    box-shadow: var(--demetra-shadow-sm);
   }
 
   .form-field {
@@ -79,7 +105,7 @@
       font-size: 14px;
       color: var(--demetra-text-color);
       outline: none;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, box-shadow 0.2s;
 
       &::placeholder {
         color: var(--demetra-text-color);
@@ -88,6 +114,7 @@
 
       &:focus {
         border-color: var(--demetra-blue);
+        box-shadow: 0 0 0 3px rgba(42, 47, 79, 0.1);
       }
 
       &.ng-touched.ng-invalid {
@@ -111,6 +138,7 @@
     }
 
     &.captcha-field input {
+      appearance: textfield;
       -moz-appearance: textfield;
 
       &::-webkit-outer-spin-button,
@@ -129,15 +157,20 @@
     background-color: var(--demetra-blue);
     color: var(--demetra-gold);
     cursor: pointer;
-    transition: opacity 0.2s;
+    transition: opacity 0.2s, transform 0.1s;
 
     &:disabled {
       opacity: 0.5;
       cursor: not-allowed;
     }
 
+    &:not(:disabled):hover {
+      opacity: 0.92;
+    }
+
     &:not(:disabled):active {
-      opacity: 0.8;
+      transform: scale(0.99);
+      opacity: 0.85;
     }
 
     &.dark {
@@ -155,7 +188,7 @@
   z-index: 1100;
   padding: 12px 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--demetra-shadow-lg);
   text-align: center;
   max-width: calc(100% - 32px);
   animation: toastIn 0.25s ease-out, toastOut 0.25s ease-in 2.75s forwards;
@@ -190,5 +223,26 @@
   to {
     opacity: 0;
     transform: translate(-50%, -16px);
+  }
+}
+
+@media (min-width: 768px) {
+  .modal-backdrop {
+    align-items: center;
+    padding: 24px;
+  }
+
+  .modal {
+    max-width: 560px;
+    border-radius: var(--demetra-radius-lg);
+    animation: scaleIn 0.25s ease-out;
+  }
+
+  .modal-header {
+    padding: 24px 28px 12px;
+  }
+
+  .modal-content {
+    padding: 0 28px 28px;
   }
 }

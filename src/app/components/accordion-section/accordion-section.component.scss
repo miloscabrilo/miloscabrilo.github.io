@@ -1,12 +1,37 @@
+:host {
+  display: block;
+}
+
+h4 {
+  margin-bottom: 12px;
+}
+
 .accordion-wrapper {
   margin-top: 8px;
-  border-radius: 16px;
-  padding: 0 16px;
+  border-radius: var(--demetra-radius-md);
+  padding: 0 20px;
   background-color: var(--demetra-white);
+  box-shadow: var(--demetra-shadow-sm);
+  transition: box-shadow 0.3s ease;
 
   accordion-item:not(:first-child) {
-    border-top: 1.5px solid var(--demetra-background);
+    border-top: 1px solid var(--demetra-divider);
     display: block;
   }
+
+  &:hover {
+    box-shadow: var(--demetra-shadow-md);
+  }
 }
-  
+
+@media (min-width: 900px) {
+  h4 {
+    margin-bottom: 16px;
+  }
+
+  .accordion-wrapper {
+    margin-top: 12px;
+    padding: 0 28px;
+    border-radius: var(--demetra-radius-lg);
+  }
+}

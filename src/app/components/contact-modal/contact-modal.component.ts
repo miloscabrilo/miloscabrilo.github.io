@@ -77,6 +77,9 @@ export class ContactModalComponent {
         this.submitStatus.set('idle');
       }
     });
+    effect(() => {
+      document.body.style.overflow = this.isVisible() ? 'hidden' : '';
+    });
   }
 
   private async loadStoredLanguage(): Promise<void> {
