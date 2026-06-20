@@ -1,9 +1,16 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, input } from '@angular/core';
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  inject,
+  input,
+  signal,
+} from '@angular/core';
 import { Feedback } from '../../core/interfaces/feedback.interface';
 import { FeedbackType } from '../../core/enums/feedback-type.enum';
 import { TranslatePipe } from '@ngx-translate/core';
 import { ThemeService } from '../../core/services/theme.service';
-import { Theme } from '../../core/enums/theme.enum';
+
+const DESKTOP_BREAKPOINT = 900;
 
 @Component({
   selector: 'clients-feedbacks',
@@ -12,16 +19,15 @@ import { Theme } from '../../core/enums/theme.enum';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   styleUrl: './clients-feedbacks.component.scss',
   standalone: true,
+  host: {
+    '(window:resize)': 'updateLayout()',
+  },
 })
 export class ClientsFeedbacksComponent {
   private readonly themeService = inject(ThemeService);
 
   readonly feedbacks = input<Feedback[]>([]);
-
-  readonly swiperBreakpoints = {
-    900: { slidesPerView: 2, spaceBetween: 16 },
-    1200: { slidesPerView: 3, spaceBetween: 20 },
-  };
+  readonly isDesktop = signal(this.computeIsDesktop());
 
   getFeedbackAvatar(feedbackType: FeedbackType): string {
     switch (feedbackType) {
@@ -37,5 +43,16 @@ export class ClientsFeedbacksComponent {
 
   getTheme(): string {
     return this.themeService.iconFolder();
+  }
+
+  protected updateLayout(): void {
+    this.isDesktop.set(this.computeIsDesktop());
+  }
+
+  private computeIsDesktop(): boolean {
+    return (
+      typeof window !== 'undefined' &&
+      window.innerWidth >= DESKTOP_BREAKPOINT
+    );
   }
 }

@@ -46,6 +46,13 @@ swiper-container::part(pagination) {
   margin-top: 12px;
 }
 
+.feedback-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 12px;
+}
+
 @media (min-width: 900px) {
   h4 {
     margin-bottom: 16px;
@@ -62,3 +69,4 @@ swiper-container::part(pagination) {
     margin-top: 12px;
   }
 }
+

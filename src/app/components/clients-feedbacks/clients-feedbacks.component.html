@@ -3,20 +3,33 @@
     {{ "FEEDBACKS.TITLE" | translate }}
   </h4>
 }
-<swiper-container
-  class="content-wrapper"
-  [spaceBetween]="8"
-  pagination="true"
-  [breakpoints]="swiperBreakpoints"
-  [class]="getTheme()"
->
-  @for (feedback of feedbacks(); track feedback.name) {
-    <swiper-slide class="content">
-      <div class="title">
-        <img [src]="getFeedbackAvatar(feedback.type)" alt="avatar" />
-        <h6 class="style-h6">{{ feedback.name | translate }}</h6>
+@if (isDesktop()) {
+  <div class="feedback-grid">
+    @for (feedback of feedbacks(); track feedback.name) {
+      <div class="content">
+        <div class="title">
+          <img [src]="getFeedbackAvatar(feedback.type)" alt="avatar" />
+          <h6 class="style-h6">{{ feedback.name | translate }}</h6>
+        </div>
+        <p class="style-p x-small">{{ feedback.text | translate }}</p>
       </div>
-      <p class="style-p x-small">{{ feedback.text | translate }}</p>
-    </swiper-slide>
-  }
-</swiper-container>
+    }
+  </div>
+} @else {
+  <swiper-container
+    class="content-wrapper"
+    [spaceBetween]="8"
+    pagination="true"
+    [class]="getTheme()"
+  >
+    @for (feedback of feedbacks(); track feedback.name) {
+      <swiper-slide class="content">
+        <div class="title">
+          <img [src]="getFeedbackAvatar(feedback.type)" alt="avatar" />
+          <h6 class="style-h6">{{ feedback.name | translate }}</h6>
+        </div>
+        <p class="style-p x-small">{{ feedback.text | translate }}</p>
+      </swiper-slide>
+    }
+  </swiper-container>
+}
