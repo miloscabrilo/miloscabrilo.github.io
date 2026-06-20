@@ -1,4 +1,15 @@
 @if (isVisible()) {
+  @if (submitStatus() === 'success' || submitStatus() === 'error') {
+    <div class="toast" [class.success]="submitStatus() === 'success'" [class.error-msg]="submitStatus() === 'error'">
+      <span class="style-h6">
+        @if (submitStatus() === 'success') {
+          {{ "CONTACT.SUCCESS" | translate }}
+        } @else {
+          {{ "CONTACT.ERROR" | translate }}
+        }
+      </span>
+    </div>
+  }
   <div class="modal-backdrop" (click)="closeModal()">
     <div class="modal" (click)="$event.stopPropagation()">
       <div class="modal-header">
@@ -83,16 +94,6 @@
               }
             </span>
           </div>
-
-          @if (submitStatus() === 'success') {
-            <div class="status-message success">
-              <span class="style-h6">{{ "CONTACT.SUCCESS" | translate }}</span>
-            </div>
-          } @else if (submitStatus() === 'error') {
-            <div class="status-message error-msg">
-              <span class="style-h6">{{ "CONTACT.ERROR" | translate }}</span>
-            </div>
-          }
 
           <button
             type="submit"

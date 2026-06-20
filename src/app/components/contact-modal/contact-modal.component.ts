@@ -49,6 +49,7 @@ export class ContactModalComponent {
   readonly captchaA = signal(0);
   readonly captchaB = signal(0);
   readonly submitStatus = signal<SubmitStatus>('idle');
+  private toastTimer: ReturnType<typeof setTimeout> | null = null;
 
   readonly contactForm = this.fb.group({
     name: ['', Validators.required],
@@ -87,6 +88,7 @@ export class ContactModalComponent {
 
   closeModal(): void {
     this.contactForm.reset();
+    this.clearToastTimer();
     this.submitStatus.set('idle');
     this.close.emit();
   }
@@ -110,14 +112,30 @@ export class ContactModalComponent {
       })
       .subscribe({
         next: () => {
-          this.submitStatus.set('success');
+          this.showToast('success');
           this.contactForm.reset();
         },
         error: (err) => {
           console.error('Failed to send message:', err);
-          this.submitStatus.set('error');
+          this.showToast('error');
         },
       });
+  }
+
+  private showToast(status: 'success' | 'error'): void {
+    this.clearToastTimer();
+    this.submitStatus.set(status);
+    this.toastTimer = setTimeout(() => {
+      this.submitStatus.set('idle');
+      this.toastTimer = null;
+    }, 3000);
+  }
+
+  private clearToastTimer(): void {
+    if (this.toastTimer) {
+      clearTimeout(this.toastTimer);
+      this.toastTimer = null;
+    }
   }
 
   getCloseIcon(): string {

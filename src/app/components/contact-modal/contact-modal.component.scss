@@ -121,22 +121,6 @@
     }
   }
 
-  .status-message {
-    text-align: center;
-    padding: 10px;
-    border-radius: 12px;
-
-    &.success {
-      background-color: #d4edda;
-      color: #155724;
-    }
-
-    &.error-msg {
-      background-color: #f8d7da;
-      color: #721c24;
-    }
-  }
-
   .submit-btn {
     width: 100%;
     padding: 14px;
@@ -160,5 +144,51 @@
       background-color: var(--demetra-gold);
       color: var(--demetra-blue);
     }
+  }
+}
+
+.toast {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1100;
+  padding: 12px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: calc(100% - 32px);
+  animation: toastIn 0.25s ease-out, toastOut 0.25s ease-in 2.75s forwards;
+
+  &.success {
+    background-color: #d4edda;
+    color: #155724;
+  }
+
+  &.error-msg {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -16px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes toastOut {
+  from {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -16px);
   }
 }
